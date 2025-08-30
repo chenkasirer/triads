@@ -28,20 +28,20 @@ const SettingsPanel: React.FC = () => {
     <div className="relative">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2 px-4 py-2 bg-gray-200 dark:bg-gray-700 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+        className="flex items-center gap-2 px-4 py-2 bg-gray text-white rounded-lg hover:bg-flame transition-colors"
       >
         <Settings size={20} />
         Settings
       </button>
 
       {isOpen && (
-        <div className="absolute top-12 right-0 bg-white dark:bg-gray-800 rounded-lg shadow-xl border border-gray-200 dark:border-gray-700 p-6 min-w-80 z-10">
-          <h3 className="text-lg font-bold mb-4">Exercise Settings</h3>
+        <div className="absolute top-12 right-0 bg-white rounded-lg shadow-xl border border-gray p-6 min-w-80 z-10">
+          <h3 className="text-lg font-bold mb-4 text-black">Exercise Settings</h3>
           
           <div className="space-y-4">
             {/* Roots */}
             <div>
-              <h4 className="font-semibold mb-2">Roots</h4>
+              <h4 className="font-semibold mb-2 text-black">Roots</h4>
               <div className="grid grid-cols-4 gap-2">
                 {allRoots.map(root => (
                   <label key={root} className="flex items-center space-x-1">
@@ -49,8 +49,9 @@ const SettingsPanel: React.FC = () => {
                       type="checkbox"
                       checked={settings.roots.includes(root)}
                       onChange={() => handleCheckboxChange('roots', root, settings.roots)}
+                      className="accent-flame"
                     />
-                    <span className="text-sm">{root}</span>
+                    <span className="text-sm text-black">{root}</span>
                   </label>
                 ))}
               </div>
@@ -58,7 +59,7 @@ const SettingsPanel: React.FC = () => {
 
             {/* Qualities */}
             <div>
-              <h4 className="font-semibold mb-2">Triad Qualities</h4>
+              <h4 className="font-semibold mb-2 text-black">Triad Qualities</h4>
               <div className="space-y-1">
                 {allQualities.map(quality => (
                   <label key={quality} className="flex items-center space-x-2">
@@ -66,8 +67,9 @@ const SettingsPanel: React.FC = () => {
                       type="checkbox"
                       checked={settings.qualities.includes(quality)}
                       onChange={() => handleCheckboxChange('qualities', quality, settings.qualities)}
+                      className="accent-flame"
                     />
-                    <span className="text-sm capitalize">{quality}</span>
+                    <span className="text-sm capitalize text-black">{quality}</span>
                   </label>
                 ))}
               </div>
@@ -75,7 +77,7 @@ const SettingsPanel: React.FC = () => {
 
             {/* Inversions */}
             <div>
-              <h4 className="font-semibold mb-2">Inversions</h4>
+              <h4 className="font-semibold mb-2 text-black">Inversions</h4>
               <div className="space-y-1">
                 {allInversions.map(inversion => (
                   <label key={inversion} className="flex items-center space-x-2">
@@ -83,8 +85,9 @@ const SettingsPanel: React.FC = () => {
                       type="checkbox"
                       checked={settings.inversions.includes(inversion)}
                       onChange={() => handleCheckboxChange('inversions', inversion, settings.inversions)}
+                      className="accent-flame"
                     />
-                    <span className="text-sm capitalize">{inversion} position</span>
+                    <span className="text-sm capitalize text-black">{inversion} position</span>
                   </label>
                 ))}
               </div>
@@ -92,7 +95,7 @@ const SettingsPanel: React.FC = () => {
 
             {/* String Groups */}
             <div>
-              <h4 className="font-semibold mb-2">String Groups</h4>
+              <h4 className="font-semibold mb-2 text-black">String Groups</h4>
               <div className="space-y-1">
                 {allStringGroups.map(group => (
                   <label key={group} className="flex items-center space-x-2">
@@ -100,8 +103,9 @@ const SettingsPanel: React.FC = () => {
                       type="checkbox"
                       checked={settings.stringGroups.includes(group)}
                       onChange={() => handleCheckboxChange('stringGroups', group, settings.stringGroups)}
+                      className="accent-flame"
                     />
-                    <span className="text-sm">Strings {group.split('').join('-')}</span>
+                    <span className="text-sm text-black">Strings {group.split('').join('-')}</span>
                   </label>
                 ))}
               </div>
@@ -110,7 +114,7 @@ const SettingsPanel: React.FC = () => {
 
           <button
             onClick={() => setIsOpen(false)}
-            className="mt-4 w-full px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
+            className="mt-4 w-full px-4 py-2 bg-flame text-white rounded-lg hover:bg-sunset transition-colors"
           >
             Done
           </button>

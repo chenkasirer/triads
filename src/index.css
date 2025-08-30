@@ -8,6 +8,7 @@
 .text-flame { color: #cf5c36; }
 .hover\:bg-flame:hover { background-color: #cf5c36; }
 .border-flame { border-color: #cf5c36; }
+.accent-flame { accent-color: #cf5c36; }
 
 .bg-lavender-blush { background-color: #eee5e9; }
 .text-lavender-blush { color: #eee5e9; }

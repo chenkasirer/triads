@@ -30,7 +30,7 @@ function App() {
     ) : [];
 
   return (
-    <div className="min-h-screen bg-lavender-blush transition-colors">
+    <div className="min-h-screen bg-white transition-colors">
       {/* Header */}
       <header className="border-b border-gray">
         <div className="max-w-4xl mx-auto px-6 py-6 flex items-center justify-between">
@@ -84,17 +84,6 @@ function App() {
             </div>
           )}
 
-          {/* Instructions */}
-          <div className="bg-sunset rounded-md p-6 text-center">
-            <p className="text-black">
-              {!currentExercise 
-                ? 'Loading...'
-                : !showAnswer
-                  ? 'Try to find the triad on your guitar first, then reveal the answer to check!'
-                  : 'Study the fretboard above, then generate a new exercise to continue practicing.'
-              }
-            </p>
-          </div>
         </div>
       </main>
 
