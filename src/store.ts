@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import type { TriadExercise, ExerciseSettings, Note, TriadQuality, Inversion, StringGroup } from './types';
+import type { TriadExercise, ExerciseSettings } from './types';
 
 interface AppState {
   settings: ExerciseSettings;
@@ -39,7 +39,7 @@ export const useAppStore = create<AppState>((set, get) => ({
       inversion: getRandomItem(settings.inversions),
       stringGroup: getRandomItem(settings.stringGroups),
     };
-    set({ currentExercise: exercise, showAnswer: false });
+    set({ currentExercise: exercise });
   },
   
   toggleAnswer: () => set((state) => ({ showAnswer: !state.showAnswer })),

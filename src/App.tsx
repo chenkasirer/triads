@@ -60,7 +60,7 @@ function App() {
               className="flex items-center gap-2 px-5 py-2.5 bg-flame text-lavender-blush rounded-md hover:bg-flame transition-colors text-sm font-medium"
             >
               <Shuffle size={18} />
-              New Exercise
+              Random Root
             </button>
             
             <button
@@ -72,7 +72,7 @@ function App() {
               }`}
             >
               {showAnswer ? <EyeOff size={18} /> : <Eye size={18} />}
-              {showAnswer ? 'Hide Answer' : 'Show Answer'}
+              {showAnswer ? 'Hide Fretboard' : 'Show Fretboard'}
             </button>
           </div>
 
