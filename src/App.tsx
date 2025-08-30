@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useAppStore } from './store';
-import { getTriadPositions } from './fretboard';
+import { getAllTriadPositions } from './fretboard';
 import Fretboard from './components/Fretboard';
 import ExerciseDisplay from './components/ExerciseDisplay';
 import SettingsPanel from './components/SettingsPanel';
@@ -22,10 +22,9 @@ function App() {
   }, [currentExercise, generateNewExercise]);
 
   const fretboardPositions = currentExercise ? 
-    getTriadPositions(
+    getAllTriadPositions(
       currentExercise.root,
       currentExercise.quality,
-      currentExercise.inversion,
       currentExercise.stringGroup
     ) : [];
 

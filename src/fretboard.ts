@@ -42,6 +42,56 @@ export function getTriadNotes(root: Note, quality: TriadQuality): TriadNotes {
   };
 }
 
+export function getAllTriadPositions(
+  root: Note,
+  quality: TriadQuality,
+  stringGroup: StringGroup
+): FretPosition[] {
+  const triadNotes = getTriadNotes(root, quality);
+  const positions: FretPosition[] = [];
+  
+  // Get the string numbers for the string group
+  const strings = stringGroup.split('').map(Number).reverse(); // Reverse to match guitar string order
+  
+  // Find all occurrences of triad notes across the specified strings within 12 frets
+  strings.forEach(stringNum => {
+    const stringRoot = STANDARD_TUNING[stringNum - 1];
+    const stringRootSemitone = NOTE_MAP[stringRoot];
+    
+    // Check each fret position (0-12) for triad notes
+    for (let fret = 0; fret <= 12; fret++) {
+      const currentNoteSemitone = (stringRootSemitone + fret) % 12;
+      const currentNote = getNoteFromSemitone(currentNoteSemitone);
+      
+      // Check if this note is part of the triad
+      if (currentNote === triadNotes.root) {
+        positions.push({
+          string: stringNum,
+          fret,
+          note: currentNote,
+          role: 'root',
+        });
+      } else if (currentNote === triadNotes.third) {
+        positions.push({
+          string: stringNum,
+          fret,
+          note: currentNote,
+          role: 'third',
+        });
+      } else if (currentNote === triadNotes.fifth) {
+        positions.push({
+          string: stringNum,
+          fret,
+          note: currentNote,
+          role: 'fifth',
+        });
+      }
+    }
+  });
+  
+  return positions;
+}
+
 export function getTriadPositions(
   root: Note,
   quality: TriadQuality,
