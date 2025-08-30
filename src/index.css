@@ -1,1 +1,21 @@
 @import "tailwindcss";
+
+/* Custom Color Palette - Base Colors Only */
+.bg-black { background-color: #000000; }
+.text-black { color: #000000; }
+
+.bg-flame { background-color: #cf5c36; }
+.text-flame { color: #cf5c36; }
+.hover\:bg-flame:hover { background-color: #cf5c36; }
+.border-flame { border-color: #cf5c36; }
+
+.bg-lavender-blush { background-color: #eee5e9; }
+.text-lavender-blush { color: #eee5e9; }
+
+.bg-gray { background-color: #7c7c7c; }
+.text-gray { color: #7c7c7c; }
+.border-gray { border-color: #7c7c7c; }
+
+.bg-sunset { background-color: #efc88b; }
+.text-sunset { color: #efc88b; }
+.border-sunset { border-color: #efc88b; }

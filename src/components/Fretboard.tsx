@@ -15,14 +15,14 @@ const Fretboard: React.FC<FretboardProps> = ({ positions }) => {
 
   const getRoleColor = (role: 'root' | 'third' | 'fifth') => {
     switch (role) {
-      case 'root': return '#ef4444'; // red
-      case 'third': return '#3b82f6'; // blue
-      case 'fifth': return '#10b981'; // green
+      case 'root': return '#cf5c36'; // flame
+      case 'third': return '#efc88b'; // sunset
+      case 'fifth': return '#000000'; // black
     }
   };
 
   return (
-    <div className="bg-amber-100 rounded-lg p-4 border-2 border-amber-800">
+    <div className="bg-white rounded-lg p-4 border-2 border-flame">
       <svg width={width} height={height} className="mx-auto">
         {/* Fret lines */}
         {Array.from({ length: frets + 1 }, (_, fret) => (
@@ -32,7 +32,7 @@ const Fretboard: React.FC<FretboardProps> = ({ positions }) => {
             y1={20}
             x2={50 + fret * fretSpacing}
             y2={height - 20}
-            stroke="#8b5cf6"
+            stroke="#7c7c7c"
             strokeWidth={fret === 0 ? 4 : 1}
           />
         ))}
@@ -45,7 +45,7 @@ const Fretboard: React.FC<FretboardProps> = ({ positions }) => {
             y1={20 + string * stringSpacing}
             x2={width - 50}
             y2={20 + string * stringSpacing}
-            stroke="#374151"
+            stroke="#000000"
             strokeWidth={2}
           />
         ))}
@@ -106,16 +106,16 @@ const Fretboard: React.FC<FretboardProps> = ({ positions }) => {
       {/* Legend */}
       <div className="flex justify-center gap-6 mt-4">
         <div className="flex items-center gap-2">
-          <div className="w-4 h-4 rounded-full bg-red-500"></div>
-          <span className="text-sm font-medium">Root</span>
+          <div className="w-4 h-4 rounded-full bg-flame-500"></div>
+          <span className="text-sm font-medium text-black">Root</span>
         </div>
         <div className="flex items-center gap-2">
-          <div className="w-4 h-4 rounded-full bg-blue-500"></div>
-          <span className="text-sm font-medium">Third</span>
+          <div className="w-4 h-4 rounded-full bg-sunset"></div>
+          <span className="text-sm font-medium text-black">Third</span>
         </div>
         <div className="flex items-center gap-2">
-          <div className="w-4 h-4 rounded-full bg-green-500"></div>
-          <span className="text-sm font-medium">Fifth</span>
+          <div className="w-4 h-4 rounded-full bg-black"></div>
+          <span className="text-sm font-medium text-black">Fifth</span>
         </div>
       </div>
     </div>
