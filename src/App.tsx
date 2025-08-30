@@ -76,12 +76,20 @@ function App() {
             </button>
           </div>
 
-          {/* Fretboard */}
-          {showAnswer && currentExercise && (
-            <div className="flex justify-center">
-              <Fretboard positions={fretboardPositions} />
+          {/* Fretboard with smooth animation */}
+          <div 
+            className={`overflow-hidden transition-all duration-500 ease-in-out ${
+              showAnswer ? 'max-h-[800px] opacity-100' : 'max-h-0 opacity-0'
+            }`}
+          >
+            <div 
+              className={`flex justify-center transform transition-all duration-500 ease-in-out ${
+                showAnswer ? 'translate-y-0 scale-100' : '-translate-y-4 scale-95'
+              }`}
+            >
+              {currentExercise && <Fretboard positions={fretboardPositions} />}
             </div>
-          )}
+          </div>
 
         </div>
       </main>
