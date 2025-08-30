@@ -29,12 +29,12 @@ function App() {
     ) : [];
 
   return (
-    <div className="min-h-screen bg-white transition-colors">
+    <div className="min-h-screen bg-gray-50 transition-colors">
       {/* Header */}
-      <header className="border-b border-gray">
+      <header className="bg-white shadow-sm">
         <div className="max-w-4xl mx-auto px-6 py-6 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-full bg-flame flex items-center justify-center">
+            <div className="w-8 h-8 rounded-full bg-flame flex items-center justify-center shadow-md">
               <Music className="text-lavender-blush" size={20} />
             </div>
             <h1 className="text-xl font-medium text-black">
@@ -78,12 +78,13 @@ function App() {
 
           {/* Fretboard with smooth animation */}
           <div 
-            className={`overflow-hidden transition-all duration-500 ease-in-out ${
+            className={`transition-all duration-500 ease-in-out ${
               showAnswer ? 'max-h-[800px] opacity-100' : 'max-h-0 opacity-0'
             }`}
+            style={{ overflow: showAnswer ? 'visible' : 'hidden' }}
           >
             <div 
-              className={`flex justify-center transform transition-all duration-500 ease-in-out ${
+              className={`flex justify-center transform transition-all duration-500 ease-in-out px-4 ${
                 showAnswer ? 'translate-y-0 scale-100' : '-translate-y-4 scale-95'
               }`}
             >
@@ -95,7 +96,7 @@ function App() {
       </main>
 
       {/* Footer */}
-      <footer className="mt-16 border-t border-gray">
+      <footer className="mt-16 bg-white shadow-sm">
         <div className="max-w-4xl mx-auto px-6 py-8 text-center text-gray text-sm">
           <p>Practice guitar triads across different roots, qualities, inversions, and string groups.</p>
         </div>

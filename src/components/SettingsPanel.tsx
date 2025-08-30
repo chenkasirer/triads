@@ -35,7 +35,7 @@ const SettingsPanel: React.FC = () => {
       </button>
 
       {isOpen && (
-        <div className="absolute top-12 right-0 bg-white rounded-lg shadow-xl border border-gray p-6 min-w-80 z-10">
+        <div className="absolute top-12 right-0 bg-white rounded-lg shadow-xl p-6 min-w-80 z-10">
           <h3 className="text-lg font-bold mb-4 text-black">Exercise Settings</h3>
           
           <div className="space-y-4">

@@ -28,7 +28,7 @@ const ExerciseDisplay: React.FC<ExerciseDisplayProps> = ({ exercise, showAnswer 
   const inversions = getInversions();
 
   return (
-    <div className="bg-white rounded-lg p-8 border border-gray">
+    <div className="bg-white rounded-lg p-8 shadow-lg">
       <div className="text-center">
         
         {/* Horizontal Layout */}
