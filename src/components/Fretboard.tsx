@@ -87,7 +87,7 @@ const Fretboard: React.FC<FretboardProps> = ({ positions }) => {
         ))}
         
         {/* String labels */}
-        {['E', 'A', 'D', 'G', 'B', 'E'].map((note, index) => (
+        {['E', 'B', 'G', 'D', 'A', 'E'].map((note, index) => (
           <text
             key={`label-${index}`}
             x={20}
