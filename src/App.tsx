@@ -30,13 +30,15 @@ function App() {
     ) : [];
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors">
+    <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors">
       {/* Header */}
-      <header className="bg-white dark:bg-gray-800 shadow-sm border-b">
-        <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+      <header className="border-b border-gray-200 dark:border-gray-700">
+        <div className="max-w-4xl mx-auto px-6 py-6 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <Music className="text-blue-600" size={32} />
-            <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
+            <div className="w-8 h-8 rounded-full bg-gray-900 dark:bg-white flex items-center justify-center">
+              <Music className="text-white dark:text-gray-900" size={20} />
+            </div>
+            <h1 className="text-xl font-medium text-gray-900 dark:text-white">
               Guitar Triad Trainer
             </h1>
           </div>
@@ -45,32 +47,32 @@ function App() {
       </header>
 
       {/* Main Content */}
-      <main className="max-w-6xl mx-auto px-4 py-8">
-        <div className="space-y-6">
+      <main className="max-w-4xl mx-auto px-6 py-12">
+        <div className="space-y-10">
           {/* Exercise Display */}
           {currentExercise && (
             <ExerciseDisplay exercise={currentExercise} showAnswer={showAnswer} />
           )}
 
           {/* Controls */}
-          <div className="flex justify-center gap-4">
+          <div className="flex justify-center gap-3">
             <button
               onClick={generateNewExercise}
-              className="flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-semibold"
+              className="flex items-center gap-2 px-5 py-2.5 bg-gray-900 text-white rounded-md hover:bg-gray-800 transition-colors text-sm font-medium"
             >
-              <Shuffle size={20} />
+              <Shuffle size={18} />
               New Exercise
             </button>
             
             <button
               onClick={toggleAnswer}
-              className={`flex items-center gap-2 px-6 py-3 rounded-lg font-semibold transition-colors ${
+              className={`flex items-center gap-2 px-5 py-2.5 rounded-md text-sm font-medium transition-colors ${
                 showAnswer 
-                  ? 'bg-red-600 text-white hover:bg-red-700'
-                  : 'bg-green-600 text-white hover:bg-green-700'
+                  ? 'bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700'
+                  : 'bg-gray-900 text-white hover:bg-gray-800 dark:bg-white dark:text-gray-900 dark:hover:bg-gray-100'
               }`}
             >
-              {showAnswer ? <EyeOff size={20} /> : <Eye size={20} />}
+              {showAnswer ? <EyeOff size={18} /> : <Eye size={18} />}
               {showAnswer ? 'Hide Answer' : 'Show Answer'}
             </button>
           </div>
@@ -83,8 +85,8 @@ function App() {
           )}
 
           {/* Instructions */}
-          <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-4 text-center">
-            <p className="text-blue-800 dark:text-blue-200">
+          <div className="bg-gray-50 dark:bg-gray-800 rounded-md p-6 text-center">
+            <p className="text-gray-600 dark:text-gray-400">
               {!currentExercise 
                 ? 'Loading...'
                 : !showAnswer
@@ -97,8 +99,8 @@ function App() {
       </main>
 
       {/* Footer */}
-      <footer className="mt-12 bg-white dark:bg-gray-800 border-t">
-        <div className="max-w-6xl mx-auto px-4 py-6 text-center text-gray-600 dark:text-gray-400">
+      <footer className="mt-16 border-t border-gray-200 dark:border-gray-700">
+        <div className="max-w-4xl mx-auto px-6 py-8 text-center text-gray-500 dark:text-gray-400 text-sm">
           <p>Practice guitar triads across different roots, qualities, inversions, and string groups.</p>
         </div>
       </footer>
