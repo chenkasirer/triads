@@ -27,9 +27,6 @@ const ExerciseDisplay: React.FC<ExerciseDisplayProps> = ({ exercise, showAnswer 
   return (
     <div className="bg-white rounded-lg p-8 border border-gray">
       <div className="text-center">
-        <h2 className="text-lg font-medium text-black mb-8">
-          Practice This Triad
-        </h2>
         
         {/* Central Root Note */}
         <div className="mb-8">
@@ -39,7 +36,7 @@ const ExerciseDisplay: React.FC<ExerciseDisplayProps> = ({ exercise, showAnswer 
             </span>
           </div>
           <div className="text-2xl font-semibold text-black">
-            {formatQuality(exercise.quality)} Triad
+            {formatQuality(exercise.quality)}
           </div>
         </div>
         

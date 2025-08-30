@@ -1,4 +1,4 @@
-import type { Note, TriadQuality, Inversion, StringGroup, TriadNotes, FretPosition } from './types';
+import type { Note, TriadQuality, StringGroup, TriadNotes, FretPosition } from './types';
 
 // Standard guitar tuning (6th string to 1st string)
 const STANDARD_TUNING: Note[] = ['E', 'A', 'D', 'G', 'B', 'E'];
@@ -90,62 +90,4 @@ export function getAllTriadPositions(
   });
   
   return positions;
-}
-
-export function getTriadPositions(
-  root: Note,
-  quality: TriadQuality,
-  inversion: Inversion,
-  stringGroup: StringGroup
-): FretPosition[] {
-  const triadNotes = getTriadNotes(root, quality);
-  const positions: FretPosition[] = [];
-  
-  // Get the string numbers for the string group
-  const strings = stringGroup.split('').map(Number).reverse(); // Reverse to match guitar string order
-  
-  // Simple triad positions (basic implementation)
-  // This is a simplified version - in a full implementation you'd have
-  // comprehensive triad fingerings for all inversions and string groups
-  
-  const noteOrder = getInversionOrder(triadNotes, inversion);
-  
-  strings.forEach((stringNum, index) => {
-    if (index < noteOrder.length) {
-      const targetNote = noteOrder[index].note;
-      const stringRoot = STANDARD_TUNING[stringNum - 1];
-      const stringRootSemitone = NOTE_MAP[stringRoot];
-      const targetSemitone = NOTE_MAP[targetNote];
-      
-      // Find the closest fret position (within first 12 frets)
-      let fret = (targetSemitone - stringRootSemitone + 12) % 12;
-      if (fret > 12) fret -= 12;
-      
-      positions.push({
-        string: stringNum,
-        fret,
-        note: targetNote,
-        role: noteOrder[index].role,
-      });
-    }
-  });
-  
-  return positions;
-}
-
-function getInversionOrder(triadNotes: TriadNotes, inversion: Inversion): Array<{ note: Note; role: 'root' | 'third' | 'fifth' }> {
-  const base = [
-    { note: triadNotes.root, role: 'root' as const },
-    { note: triadNotes.third, role: 'third' as const },
-    { note: triadNotes.fifth, role: 'fifth' as const },
-  ];
-  
-  switch (inversion) {
-    case 'root':
-      return base;
-    case 'first':
-      return [base[1], base[2], base[0]]; // 3rd, 5th, root
-    case 'second':
-      return [base[2], base[0], base[1]]; // 5th, root, 3rd
-  }
 }
