@@ -1,5 +1,6 @@
 import React from 'react';
 import type { TriadExercise } from '../types';
+import { getTriadNotes } from '../fretboard';
 
 interface ExerciseDisplayProps {
   exercise: TriadExercise;
@@ -7,15 +8,6 @@ interface ExerciseDisplayProps {
 }
 
 const ExerciseDisplay: React.FC<ExerciseDisplayProps> = ({ exercise, showAnswer }) => {
-  const formatInversion = (inversion: string) => {
-    switch (inversion) {
-      case 'root': return 'Root Position';
-      case 'first': return '1st Inversion';
-      case 'second': return '2nd Inversion';
-      default: return inversion;
-    }
-  };
-
   const formatQuality = (quality: string) => {
     return quality.charAt(0).toUpperCase() + quality.slice(1);
   };
@@ -24,39 +16,83 @@ const ExerciseDisplay: React.FC<ExerciseDisplayProps> = ({ exercise, showAnswer 
     return `Strings ${stringGroup.split('').join('-')}`;
   };
 
+  const getInversions = () => {
+    const triadNotes = getTriadNotes(exercise.root, exercise.quality);
+    return {
+      root: [triadNotes.root, triadNotes.third, triadNotes.fifth],
+      first: [triadNotes.third, triadNotes.fifth, triadNotes.root],
+      second: [triadNotes.fifth, triadNotes.root, triadNotes.third]
+    };
+  };
+
+  const inversions = getInversions();
+
   return (
     <div className="bg-white rounded-lg p-8 border border-gray">
       <div className="text-center">
         
-        {/* Central Root Note */}
-        <div className="mb-8">
-          <div className="inline-flex items-center justify-center w-32 h-32 rounded-full bg-flame mb-4">
-            <span className="text-5xl font-bold text-lavender-blush">
-              {exercise.root}
-            </span>
-          </div>
-          <div className="text-2xl font-semibold text-black">
-            {formatQuality(exercise.quality)}
-          </div>
-        </div>
-        
-        {/* Secondary Details */}
-        <div className="flex justify-center gap-8 text-sm text-gray">
+        {/* Horizontal Layout */}
+        <div className="mb-8 flex items-center justify-center gap-16">
+          {/* Root Note on the left */}
           <div className="text-center">
-            <div className="font-medium mb-1">Inversion</div>
-            <div className="text-black font-semibold">
-              {formatInversion(exercise.inversion)}
+            <div className="inline-flex items-center justify-center w-36 h-36 rounded-full bg-flame mb-4">
+              <span className="text-5xl font-bold text-lavender-blush">
+                {exercise.root}
+              </span>
+            </div>
+            <div className="text-2xl font-semibold text-black">
+              {formatQuality(exercise.quality)}
             </div>
           </div>
-          
-          <div className="text-center">
-            <div className="font-medium mb-1">Strings</div>
-            <div className="text-black font-semibold">
-              {formatStringGroup(exercise.stringGroup)}
+
+          {/* Right side: Inversions and Focus Area stacked */}
+          <div className="space-y-6">
+            {/* Inversions */}
+            <div>
+              <div className="text-base text-gray font-medium mb-3">Inversions:</div>
+              <div className="space-y-2">
+                <div className="text-base">
+                  <span className="font-semibold text-black w-14 inline-block">Root:</span> 
+                  <span className="flex items-center gap-1.5 inline-flex ml-3">
+                    <span className="w-6 h-6 rounded-full bg-flame text-white text-sm flex items-center justify-center font-bold">{inversions.root[0]}</span>
+                    <span className="mx-1 text-gray">-</span>
+                    <span className="w-6 h-6 rounded-full bg-sunset text-black text-sm flex items-center justify-center font-bold">{inversions.root[1]}</span>
+                    <span className="mx-1 text-gray">-</span>
+                    <span className="w-6 h-6 rounded-full bg-black text-white text-sm flex items-center justify-center font-bold">{inversions.root[2]}</span>
+                  </span>
+                </div>
+                <div className="text-base">
+                  <span className="font-semibold text-black w-14 inline-block">1st:</span> 
+                  <span className="flex items-center gap-1.5 inline-flex ml-3">
+                    <span className="w-6 h-6 rounded-full bg-sunset text-black text-sm flex items-center justify-center font-bold">{inversions.first[0]}</span>
+                    <span className="mx-1 text-gray">-</span>
+                    <span className="w-6 h-6 rounded-full bg-black text-white text-sm flex items-center justify-center font-bold">{inversions.first[1]}</span>
+                    <span className="mx-1 text-gray">-</span>
+                    <span className="w-6 h-6 rounded-full bg-flame text-white text-sm flex items-center justify-center font-bold">{inversions.first[2]}</span>
+                  </span>
+                </div>
+                <div className="text-base">
+                  <span className="font-semibold text-black w-14 inline-block">2nd:</span> 
+                  <span className="flex items-center gap-1.5 inline-flex ml-3">
+                    <span className="w-6 h-6 rounded-full bg-black text-white text-sm flex items-center justify-center font-bold">{inversions.second[0]}</span>
+                    <span className="mx-1 text-gray">-</span>
+                    <span className="w-6 h-6 rounded-full bg-flame text-white text-sm flex items-center justify-center font-bold">{inversions.second[1]}</span>
+                    <span className="mx-1 text-gray">-</span>
+                    <span className="w-6 h-6 rounded-full bg-sunset text-black text-sm flex items-center justify-center font-bold">{inversions.second[2]}</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* Focus Area */}
+            <div>
+              <div className="text-base text-gray font-medium mb-3">Focus Area:</div>
+              <div className="text-lg text-black font-semibold">
+                {formatStringGroup(exercise.stringGroup)}
+              </div>
             </div>
           </div>
         </div>
-        
         {!showAnswer && (
           <div className="mt-8 p-4 bg-sunset rounded-lg">
             <p className="text-black">
