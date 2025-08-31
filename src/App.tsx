@@ -99,7 +99,24 @@ function App() {
       {/* Footer */}
       <footer className="mt-16 bg-white shadow-sm">
         <div className="max-w-4xl mx-auto px-6 py-8 text-center text-gray text-sm">
-          <p>Practice guitar triads across different roots, qualities, inversions, and string groups.</p>
+          <div className="flex items-center justify-center gap-2">
+            <a 
+              href="https://github.com/chenkasirer" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 text-gray hover:text-black transition-colors"
+              >
+              <span>vibe coded by chenkasirer</span>
+              <img 
+                src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/github.svg" 
+                alt="GitHub" 
+                width="16" 
+                height="16"
+                className="filter brightness-0 opacity-60 hover:opacity-100 transition-opacity"
+              />
+
+            </a>
+          </div>
         </div>
       </footer>
     </div>
