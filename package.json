@@ -3,6 +3,9 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "license": "MIT",
+  "author": "Chen Kasirer",
+  "description": "Guitar triad trainer for learning chord positions on the fretboard",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
