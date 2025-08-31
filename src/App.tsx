@@ -34,12 +34,12 @@ function App() {
     <div className="min-h-screen bg-gray-50 transition-colors flex flex-col">
       {/* Header */}
       <header className="bg-white shadow-sm">
-        <div className="max-w-4xl mx-auto px-6 py-6 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-lg overflow-hidden shadow-md">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 py-4 sm:py-6 flex items-center justify-between">
+          <div className="flex items-center gap-2 sm:gap-3">
+            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg overflow-hidden shadow-md">
               <img src={logoSvg} alt="Triad Trainer Logo" className="w-full h-full object-cover" />
             </div>
-            <h1 className="text-xl font-semibold text-black">
+            <h1 className="text-lg sm:text-xl font-semibold text-black">
               Guitar Triad Trainer
             </h1>
           </div>
@@ -48,18 +48,18 @@ function App() {
       </header>
 
       {/* Main Content */}
-      <main className="max-w-4xl mx-auto px-6 py-12 flex-1">
-        <div className="space-y-10">
+      <main className="max-w-4xl mx-auto px-4 sm:px-6 py-8 sm:py-12 flex-1">
+        <div className="space-y-6 sm:space-y-10">
           {/* Exercise Display */}
           {currentExercise && (
             <ExerciseDisplay exercise={currentExercise} showAnswer={showAnswer} />
           )}
 
           {/* Controls */}
-          <div className="flex justify-center gap-3">
+          <div className="flex flex-col sm:flex-row justify-center gap-3">
             <button
               onClick={generateNewExercise}
-              className="flex items-center gap-2 px-5 py-2.5 bg-flame text-lavender-blush rounded-md hover:bg-flame transition-colors text-sm font-medium"
+              className="flex items-center justify-center gap-2 px-5 py-2.5 bg-flame text-lavender-blush rounded-md hover:bg-flame transition-colors text-sm font-medium"
             >
               <Shuffle size={18} />
               Random Root
@@ -67,7 +67,7 @@ function App() {
             
             <button
               onClick={toggleAnswer}
-              className={`flex items-center gap-2 px-5 py-2.5 rounded-md text-sm font-medium transition-colors ${
+              className={`flex items-center justify-center gap-2 px-5 py-2.5 rounded-md text-sm font-medium transition-colors ${
                 showAnswer 
                   ? 'bg-gray text-lavender-blush'
                   : 'bg-black text-lavender-blush'
@@ -86,7 +86,7 @@ function App() {
             style={{ overflow: showAnswer ? 'visible' : 'hidden' }}
           >
             <div 
-              className={`flex justify-center transform transition-all duration-500 ease-in-out px-4 ${
+              className={`flex justify-center transform transition-all duration-500 ease-in-out px-2 sm:px-4 ${
                 showAnswer ? 'translate-y-0 scale-100' : '-translate-y-4 scale-95'
               }`}
             >
@@ -99,7 +99,7 @@ function App() {
 
       {/* Footer */}
       <footer className="bg-white shadow-sm mt-auto">
-        <div className="max-w-4xl mx-auto px-6 py-8 text-center text-gray text-sm">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 py-6 sm:py-8 text-center text-gray text-sm">
           <div className="flex items-center justify-center gap-2">
             <a 
               href="https://github.com/chenkasirer" 

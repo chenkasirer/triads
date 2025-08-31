@@ -34,8 +34,13 @@ const Fretboard: React.FC<FretboardProps> = ({ positions }) => {
   };
 
   return (
-    <div className="bg-white rounded-lg p-4 shadow-lg">
-      <svg width={width} height={height} className="mx-auto">
+    <div className="bg-white rounded-lg p-2 sm:p-4 shadow-lg overflow-x-auto">
+      <svg 
+        width={width} 
+        height={height} 
+        className="mx-auto min-w-max"
+        style={{ minWidth: `${width}px` }}
+      >
         {/* Fret lines */}
         {Array.from({ length: frets + 1 }, (_, fret) => (
           <line
