@@ -1,5 +1,15 @@
 @import "tailwindcss";
 
+/* Font Family Definitions */
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-feature-settings: 'cv03', 'cv04', 'cv11';
+}
+
+.font-display {
+  font-family: 'Playfair Display', serif;
+}
+
 /* Custom Color Palette - Base Colors Only */
 .bg-black { background-color: #000000; }
 .text-black { color: #000000; }

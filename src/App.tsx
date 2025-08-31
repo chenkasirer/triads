@@ -38,7 +38,7 @@ function App() {
             <div className="w-10 h-10 rounded-lg overflow-hidden shadow-md">
               <img src={logoSvg} alt="Triad Trainer Logo" className="w-full h-full object-cover" />
             </div>
-            <h1 className="text-xl font-medium text-black">
+            <h1 className="text-xl font-semibold text-black">
               Guitar Triad Trainer
             </h1>
           </div>
