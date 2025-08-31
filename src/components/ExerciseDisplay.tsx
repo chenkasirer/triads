@@ -52,7 +52,7 @@ const ExerciseDisplay: React.FC<ExerciseDisplayProps> = ({ exercise, showAnswer 
               <div className="text-base text-gray font-medium mb-3">Inversions:</div>
               <div className="space-y-2">
                 <div className="text-base">
-                  <span className="font-semibold text-black w-14 inline-block">Root:</span> 
+                  <span className="font-semibold text-black w-14 inline-block">Root</span> 
                   <span className="flex items-center gap-1.5 inline-flex ml-3">
                     <span className="w-6 h-6 rounded-full bg-flame text-white text-sm flex items-center justify-center font-bold">{inversions.root[0]}</span>
                     <span className="mx-1 text-gray">-</span>
@@ -62,7 +62,7 @@ const ExerciseDisplay: React.FC<ExerciseDisplayProps> = ({ exercise, showAnswer 
                   </span>
                 </div>
                 <div className="text-base">
-                  <span className="font-semibold text-black w-14 inline-block">1st:</span> 
+                  <span className="font-semibold text-black w-14 inline-block">1<sup>st</sup></span> 
                   <span className="flex items-center gap-1.5 inline-flex ml-3">
                     <span className="w-6 h-6 rounded-full bg-sunset text-black text-sm flex items-center justify-center font-bold">{inversions.first[0]}</span>
                     <span className="mx-1 text-gray">-</span>
@@ -72,7 +72,7 @@ const ExerciseDisplay: React.FC<ExerciseDisplayProps> = ({ exercise, showAnswer 
                   </span>
                 </div>
                 <div className="text-base">
-                  <span className="font-semibold text-black w-14 inline-block">2nd:</span> 
+                  <span className="font-semibold text-black w-14 inline-block">2<sup>nd</sup></span> 
                   <span className="flex items-center gap-1.5 inline-flex ml-3">
                     <span className="w-6 h-6 rounded-full bg-black text-white text-sm flex items-center justify-center font-bold">{inversions.second[0]}</span>
                     <span className="mx-1 text-gray">-</span>

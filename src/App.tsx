@@ -30,7 +30,7 @@ function App() {
     ) : [];
 
   return (
-    <div className="min-h-screen bg-gray-50 transition-colors">
+    <div className="min-h-screen bg-gray-50 transition-colors flex flex-col">
       {/* Header */}
       <header className="bg-white shadow-sm">
         <div className="max-w-4xl mx-auto px-6 py-6 flex items-center justify-between">
@@ -47,7 +47,7 @@ function App() {
       </header>
 
       {/* Main Content */}
-      <main className="max-w-4xl mx-auto px-6 py-12">
+      <main className="max-w-4xl mx-auto px-6 py-12 flex-1">
         <div className="space-y-10">
           {/* Exercise Display */}
           {currentExercise && (
@@ -97,14 +97,14 @@ function App() {
       </main>
 
       {/* Footer */}
-      <footer className="mt-16 bg-white shadow-sm">
+      <footer className="bg-white shadow-sm mt-auto">
         <div className="max-w-4xl mx-auto px-6 py-8 text-center text-gray text-sm">
           <div className="flex items-center justify-center gap-2">
             <a 
               href="https://github.com/chenkasirer" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-gray hover:text-black transition-colors"
+              className="inline-flex items-center gap-1 text-black brightness-0 opacity-60 hover:opacity-100 transition-colors"
               >
               <span>vibe coded by chenkasirer</span>
               <img 

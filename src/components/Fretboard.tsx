@@ -145,11 +145,11 @@ const Fretboard: React.FC<FretboardProps> = ({ positions }) => {
         </div>
         <div className="flex items-center gap-2">
           <div className="w-4 h-4 rounded-full bg-sunset"></div>
-          <span className="text-sm font-medium text-black">Third</span>
+          <span className="text-sm font-medium text-black">3<sup>rd</sup></span>
         </div>
         <div className="flex items-center gap-2">
           <div className="w-4 h-4 rounded-full bg-black"></div>
-          <span className="text-sm font-medium text-black">Fifth</span>
+          <span className="text-sm font-medium text-black">5<sup>th</sup></span>
         </div>
       </div>
     </div>
