@@ -4,6 +4,7 @@ import { getAllTriadPositions } from './fretboard';
 import Fretboard from './components/Fretboard';
 import ExerciseDisplay from './components/ExerciseDisplay';
 import SettingsPanel from './components/SettingsPanel';
+import CookieConsent from './components/CookieConsent';
 import { Shuffle, Eye, EyeOff } from 'lucide-react';
 import logoSvg from './assets/triad-fretboard.svg';
 
@@ -119,6 +120,9 @@ function App() {
           </div>
         </div>
       </footer>
+
+      {/* Cookie Consent */}
+      <CookieConsent />
     </div>
   );
 }
