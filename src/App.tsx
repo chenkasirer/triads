@@ -4,7 +4,8 @@ import { getAllTriadPositions } from './fretboard';
 import Fretboard from './components/Fretboard';
 import ExerciseDisplay from './components/ExerciseDisplay';
 import SettingsPanel from './components/SettingsPanel';
-import { Shuffle, Eye, EyeOff, Music } from 'lucide-react';
+import { Shuffle, Eye, EyeOff } from 'lucide-react';
+import logoSvg from './assets/triad-fretboard.svg';
 
 function App() {
   const { 
@@ -34,8 +35,8 @@ function App() {
       <header className="bg-white shadow-sm">
         <div className="max-w-4xl mx-auto px-6 py-6 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-full bg-flame flex items-center justify-center shadow-md">
-              <Music className="text-lavender-blush" size={20} />
+            <div className="w-10 h-10 rounded-lg overflow-hidden shadow-md">
+              <img src={logoSvg} alt="Triad Trainer Logo" className="w-full h-full object-cover" />
             </div>
             <h1 className="text-xl font-medium text-black">
               Guitar Triad Trainer
