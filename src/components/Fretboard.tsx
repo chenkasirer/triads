@@ -97,7 +97,7 @@ const Fretboard: React.FC<FretboardProps> = ({ positions }) => {
           <g key={index}>
             <circle
               cx={leftPadding + (pos.fret === 0 ? -30 : (pos.fret - 0.5) * fretSpacing)}
-              cy={topPadding + (strings - pos.string) * stringSpacing}
+              cy={topPadding + (pos.string - 1) * stringSpacing}
               r={15}
               fill={getRoleColor(pos.role)}
               stroke="white"
@@ -105,7 +105,7 @@ const Fretboard: React.FC<FretboardProps> = ({ positions }) => {
             />
             <text
               x={leftPadding + (pos.fret === 0 ? -30 : (pos.fret - 0.5) * fretSpacing)}
-              y={topPadding + (strings - pos.string) * stringSpacing}
+              y={topPadding + (pos.string - 1) * stringSpacing}
               textAnchor="middle"
               dominantBaseline="middle"
               fill={getTextColor(pos.role)}
@@ -119,8 +119,8 @@ const Fretboard: React.FC<FretboardProps> = ({ positions }) => {
         
         {/* String labels */}
         {['E', 'B', 'G', 'D', 'A', 'E'].map((note, index) => {
-          // Check if there's a triad note on this open string
-          const hasTriadNote = positions.some(pos => pos.fret === 0 && pos.string === (6 - index));
+          const stringNumber = index + 1;
+          const hasTriadNote = positions.some(pos => pos.fret === 0 && pos.string === stringNumber);
           
           // Only show string label if there's no triad note on this open string
           if (hasTriadNote) return null;

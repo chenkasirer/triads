@@ -51,11 +51,11 @@ export function getAllTriadPositions(
   const positions: FretPosition[] = [];
   
   // Get the string numbers for the string group
-  const strings = stringGroup.split('').map(Number).reverse(); // Reverse to match guitar string order
+  const strings = stringGroup.split('').map(Number);
   
   // Find all occurrences of triad notes across the specified strings within 12 frets
   strings.forEach(stringNum => {
-    const stringRoot = STANDARD_TUNING[stringNum - 1];
+    const stringRoot = STANDARD_TUNING[6 - stringNum];
     const stringRootSemitone = NOTE_MAP[stringRoot];
     
     // Check each fret position (0-12) for triad notes
