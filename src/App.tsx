@@ -31,10 +31,10 @@ function App() {
     ) : [];
 
   return (
-    <div className="min-h-screen bg-gray-50 transition-colors flex flex-col">
+    <div className="min-h-screen bg-gray-50 transition-colors flex flex-col overflow-x-hidden">
       {/* Header */}
       <header className="bg-white shadow-sm">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 py-4 sm:py-6 flex items-center justify-between">
+        <div className="w-full max-w-4xl mx-auto px-4 sm:px-6 py-4 sm:py-6 flex items-center justify-between">
           <div className="flex items-center gap-2 sm:gap-3">
             <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg overflow-hidden shadow-md">
               <img src={logoSvg} alt="Triad Trainer Logo" className="w-full h-full object-cover" />
@@ -48,8 +48,8 @@ function App() {
       </header>
 
       {/* Main Content */}
-      <main className="max-w-4xl mx-auto px-4 sm:px-6 py-8 sm:py-12 flex-1">
-        <div className="space-y-6 sm:space-y-10">
+      <main className="w-full max-w-4xl mx-auto px-4 sm:px-6 py-8 sm:py-12 flex-1">
+        <div className="space-y-6 sm:space-y-10 w-full">
           {/* Exercise Display */}
           {currentExercise && (
             <ExerciseDisplay exercise={currentExercise} showAnswer={showAnswer} />
@@ -86,7 +86,7 @@ function App() {
             style={{ overflow: showAnswer ? 'visible' : 'hidden' }}
           >
             <div 
-              className={`flex justify-center transform transition-all duration-500 ease-in-out px-2 sm:px-4 ${
+              className={`flex justify-center transform transition-all duration-500 ease-in-out ${
                 showAnswer ? 'translate-y-0 scale-100' : '-translate-y-4 scale-95'
               }`}
             >
@@ -99,7 +99,7 @@ function App() {
 
       {/* Footer */}
       <footer className="bg-white shadow-sm mt-auto">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 py-6 sm:py-8 text-center text-gray text-sm">
+        <div className="w-full max-w-4xl mx-auto px-4 sm:px-6 py-6 sm:py-8 text-center text-gray text-sm">
           <div className="flex items-center justify-center gap-2">
             <a 
               href="https://github.com/chenkasirer/triads" 
@@ -107,7 +107,7 @@ function App() {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1 text-black brightness-0 opacity-60 hover:opacity-100 transition-colors"
               >
-              <span>vibe coded by chenkasirer</span>
+              <span className="text-xs sm:text-sm">vibe coded by chenkasirer</span>
               <img 
                 src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/github.svg" 
                 alt="GitHub" 

@@ -35,8 +35,16 @@ const SettingsPanel: React.FC = () => {
       </button>
 
       {isOpen && (
-        <div className="absolute top-12 right-0 bg-white rounded-lg shadow-xl p-6 min-w-80 z-10">
-          <h3 className="text-lg font-bold mb-4 text-black">Exercise Settings</h3>
+        <div className="fixed inset-0 z-40">
+          {/* Mobile backdrop */}
+          <div 
+            className="absolute inset-0 bg-black bg-opacity-50 sm:hidden"
+            onClick={() => setIsOpen(false)}
+          />
+          
+          {/* Settings panel */}
+          <div className="absolute top-12 right-4 sm:right-0 bg-white rounded-lg shadow-xl p-4 sm:p-6 w-80 sm:min-w-80 max-w-[calc(100vw-2rem)] sm:max-w-none">
+            <h3 className="text-base sm:text-lg font-bold mb-3 sm:mb-4 text-black">Exercise Settings</h3>
           
           <div className="space-y-4">
             {/* Roots */}
@@ -118,6 +126,7 @@ const SettingsPanel: React.FC = () => {
           >
             Done
           </button>
+          </div>
         </div>
       )}
     </div>

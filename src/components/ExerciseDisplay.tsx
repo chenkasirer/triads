@@ -28,58 +28,58 @@ const ExerciseDisplay: React.FC<ExerciseDisplayProps> = ({ exercise, showAnswer 
   const inversions = getInversions();
 
   return (
-    <div className="bg-white rounded-lg p-4 sm:p-8 shadow-lg">
-      <div className="text-center">
+    <div className="bg-white rounded-lg p-4 sm:p-8 shadow-lg w-full">
+      <div className="text-center w-full">
         
-        {/* Responsive Layout: Stack on mobile, horizontal on desktop */}
-        <div className="mb-6 sm:mb-8 flex flex-col lg:flex-row lg:items-center lg:justify-center lg:gap-16 gap-8">
+        {/* Responsive Layout: Stack on mobile, horizontal on large screens */}
+        <div className="mb-6 sm:mb-8 flex flex-col md:flex-row md:items-center md:justify-center md:gap-12 lg:gap-16 gap-6 sm:gap-8 w-full">
           {/* Root Note */}
-          <div className="text-center">
-            <div className="inline-flex items-center justify-center w-28 h-28 sm:w-36 sm:h-36 rounded-full bg-flame mb-4">
-              <span className="text-4xl sm:text-5xl font-bold text-lavender-blush">
+          <div className="text-center flex-shrink-0">
+            <div className="inline-flex items-center justify-center w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 rounded-full bg-flame mb-4">
+              <span className="text-3xl sm:text-4xl md:text-5xl font-bold text-lavender-blush">
                 {exercise.root}
               </span>
             </div>
-            <div className="text-xl sm:text-2xl font-semibold text-black">
+            <div className="text-lg sm:text-xl md:text-2xl font-semibold text-black">
               {formatQuality(exercise.quality)}
             </div>
           </div>
 
           {/* Inversions and Focus Area */}
-          <div className="space-y-4 sm:space-y-6">
+          <div className="space-y-4 sm:space-y-6 w-full md:w-auto md:text-left text-center">
             {/* Inversions */}
             <div>
               <div className="text-sm sm:text-base text-gray font-medium mb-3">Inversions:</div>
               <div className="space-y-2">
-                <div className="text-sm sm:text-base">
-                  <span className="font-semibold text-black w-12 sm:w-14 inline-block text-left">Root</span> 
-                  <span className="flex items-center gap-1 sm:gap-1.5 inline-flex ml-2 sm:ml-3">
+                <div className="text-sm sm:text-base flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-0">
+                  <span className="font-semibold text-black w-full sm:w-12 md:w-14 text-center sm:text-left">Root</span> 
+                  <div className="flex items-center justify-center sm:justify-start gap-1 sm:gap-1.5 sm:ml-2 md:ml-3">
                     <span className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-flame text-white text-xs sm:text-sm flex items-center justify-center font-bold">{inversions.root[0]}</span>
                     <span className="mx-0.5 sm:mx-1 text-gray">-</span>
                     <span className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-sunset text-black text-xs sm:text-sm flex items-center justify-center font-bold">{inversions.root[1]}</span>
                     <span className="mx-0.5 sm:mx-1 text-gray">-</span>
                     <span className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-black text-white text-xs sm:text-sm flex items-center justify-center font-bold">{inversions.root[2]}</span>
-                  </span>
+                  </div>
                 </div>
-                <div className="text-sm sm:text-base">
-                  <span className="font-semibold text-black w-12 sm:w-14 inline-block text-left">1<sup>st</sup></span> 
-                  <span className="flex items-center gap-1 sm:gap-1.5 inline-flex ml-2 sm:ml-3">
+                <div className="text-sm sm:text-base flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-0">
+                  <span className="font-semibold text-black w-full sm:w-12 md:w-14 text-center sm:text-left">1<sup>st</sup></span> 
+                  <div className="flex items-center justify-center sm:justify-start gap-1 sm:gap-1.5 sm:ml-2 md:ml-3">
                     <span className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-sunset text-black text-xs sm:text-sm flex items-center justify-center font-bold">{inversions.first[0]}</span>
                     <span className="mx-0.5 sm:mx-1 text-gray">-</span>
                     <span className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-black text-white text-xs sm:text-sm flex items-center justify-center font-bold">{inversions.first[1]}</span>
                     <span className="mx-0.5 sm:mx-1 text-gray">-</span>
                     <span className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-flame text-white text-xs sm:text-sm flex items-center justify-center font-bold">{inversions.first[2]}</span>
-                  </span>
+                  </div>
                 </div>
-                <div className="text-sm sm:text-base">
-                  <span className="font-semibold text-black w-12 sm:w-14 inline-block text-left">2<sup>nd</sup></span> 
-                  <span className="flex items-center gap-1 sm:gap-1.5 inline-flex ml-2 sm:ml-3">
+                <div className="text-sm sm:text-base flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-0">
+                  <span className="font-semibold text-black w-full sm:w-12 md:w-14 text-center sm:text-left">2<sup>nd</sup></span> 
+                  <div className="flex items-center justify-center sm:justify-start gap-1 sm:gap-1.5 sm:ml-2 md:ml-3">
                     <span className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-black text-white text-xs sm:text-sm flex items-center justify-center font-bold">{inversions.second[0]}</span>
                     <span className="mx-0.5 sm:mx-1 text-gray">-</span>
                     <span className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-flame text-white text-xs sm:text-sm flex items-center justify-center font-bold">{inversions.second[1]}</span>
                     <span className="mx-0.5 sm:mx-1 text-gray">-</span>
                     <span className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-sunset text-black text-xs sm:text-sm flex items-center justify-center font-bold">{inversions.second[2]}</span>
-                  </span>
+                  </div>
                 </div>
               </div>
             </div>
