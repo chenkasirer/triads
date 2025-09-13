@@ -4,6 +4,7 @@ import { getTriadNotes } from '../fretboard';
 import { useAppStore } from '../store';
 import RootSelectorWheel from './RootSelectorWheel';
 import StringGroupSlider from './StringGroupSlider';
+import { RootHistoryPane } from './RootHistoryPane';
 
 interface ExerciseDisplayProps {
   exercise: TriadExercise;
@@ -96,6 +97,12 @@ const ExerciseDisplay: React.FC<ExerciseDisplayProps> = ({ exercise, showAnswer 
             </div>
           </div>
         </div>
+
+        {/* Session History Pane - Now below main content for all screen sizes */}
+        <div className="mb-6 sm:mb-8">
+          <RootHistoryPane />
+        </div>
+        
         {!showAnswer && (
           <div className="mt-6 sm:mt-8 p-3 sm:p-4 bg-sunset rounded-lg">
             <p className="text-black text-sm sm:text-base">

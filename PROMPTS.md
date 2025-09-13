@@ -1,5 +1,22 @@
 This is a list of feature I'd like to add. For copilot to read and implement.
 
+# ✅ F003 - Root practice history pane (IMPLEMENTED)
+
+Add some kind of ui element which holds, per the current session, the roots the user has gone through. this will let the use track their current exercise session. use this storage to make sure that per session, the same root does not recure when randomizing (maybe make this part configurable).
+There should be a button to clear this history element and start over, this should also clear the storage tracking the history.
+
+**Implementation Notes:**
+- Created `RootHistoryPane.tsx` component displaying session history in a clean card layout
+- Added `sessionHistory` array and `allowRepeatRoots` boolean to Zustand store
+- Implemented `addToHistory()` and `clearHistory()` methods in store
+- Modified `generateNewExercise()` to avoid duplicate roots when `allowRepeatRoots` is false
+- Auto-resets history when all available roots have been practiced
+- Updated `setExerciseRoot()` to track manual root selections in history
+- Added configurable checkbox to allow/prevent repeat roots during randomization
+- Integrated history pane as sidebar in ExerciseDisplay with responsive layout
+- Visual indicators show practiced roots with circular badges and count
+- Clear button resets session and "Allow repeat roots" toggle for user preference
+
 # ✅ F002 - String group selector slider (IMPLEMENTED)
 
 User should also be able to choose a string group where to show the triad notes.
