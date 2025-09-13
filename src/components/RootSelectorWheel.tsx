@@ -182,10 +182,10 @@ const RootSelectorWheel: React.FC<RootSelectorWheelProps> = ({
         
         {/* 12 o'clock marker */}
         <div 
-          className="absolute w-0 h-0 border-l-[9px] border-r-[9px] border-b-[13px] border-l-transparent border-r-transparent border-b-flame"
+          className="absolute w-0 h-0 border-l-[5px] border-r-[5px] border-t-[9px] border-l-transparent border-r-transparent border-b-flame"
           style={{ 
-            left: centerX - 9, 
-            top: 9 
+            left: centerX - 5, 
+            top: 9
           }}
         />
         
