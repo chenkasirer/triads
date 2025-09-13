@@ -33,7 +33,7 @@ const getRandomItem = <T>(array: T[]): T => {
 export const useAppStore = create<AppState>((set, get) => ({
   settings: defaultSettings,
   currentExercise: null,
-  showAnswer: false,
+  showAnswer: true,
   animateToRoot: null,
   animateToStringGroup: null,
   sessionHistory: [],
