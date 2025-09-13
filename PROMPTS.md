@@ -1,5 +1,13 @@
 This is a list of feature I'd like to add. For copilot to read and implement.
 
+# F002 - String group selector slider
+
+User should also be able to choose a string group where to show the triad notes.
+Make is as a slider with 4 set positions, one for each of the string groups. 
+Selection should be smooth and responsive, same as the root note wheel.
+When randomizing a root note, a random string group will also be selected, reflected in the position of the slider.
+
+
 # ✅ F001 - Root selector wheel (IMPLEMENTED)
 
 The root note in the exercise box should be at the 12 o'clock position of a selector wheel which shall have all 12 notes on.
