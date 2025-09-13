@@ -1,14 +1,16 @@
 import { create } from 'zustand';
-import type { TriadExercise, ExerciseSettings, Note } from './types';
+import type { TriadExercise, ExerciseSettings, Note, StringGroup } from './types';
 
 interface AppState {
   settings: ExerciseSettings;
   currentExercise: TriadExercise | null;
   showAnswer: boolean;
   animateToRoot: Note | null;
+  animateToStringGroup: StringGroup | null;
   updateSettings: (settings: Partial<ExerciseSettings>) => void;
   generateNewExercise: () => void;
   setExerciseRoot: (root: Note) => void;
+  setExerciseStringGroup: (stringGroup: StringGroup) => void;
   toggleAnswer: () => void;
 }
 
@@ -28,6 +30,7 @@ export const useAppStore = create<AppState>((set, get) => ({
   currentExercise: null,
   showAnswer: false,
   animateToRoot: null,
+  animateToStringGroup: null,
   
   updateSettings: (newSettings) =>
     set((state) => ({
@@ -37,15 +40,20 @@ export const useAppStore = create<AppState>((set, get) => ({
   generateNewExercise: () => {
     const { settings } = get();
     const newRoot = getRandomItem(settings.roots);
+    const newStringGroup = getRandomItem(settings.stringGroups);
     const exercise: TriadExercise = {
       root: newRoot,
       quality: getRandomItem(settings.qualities),
       inversion: getRandomItem(settings.inversions),
-      stringGroup: getRandomItem(settings.stringGroups),
+      stringGroup: newStringGroup,
     };
-    set({ currentExercise: exercise, animateToRoot: newRoot });
+    set({ 
+      currentExercise: exercise, 
+      animateToRoot: newRoot,
+      animateToStringGroup: newStringGroup 
+    });
     // Clear animation after a delay
-    setTimeout(() => set({ animateToRoot: null }), 100);
+    setTimeout(() => set({ animateToRoot: null, animateToStringGroup: null }), 100);
   },
   
   setExerciseRoot: (root) => {
@@ -54,6 +62,16 @@ export const useAppStore = create<AppState>((set, get) => ({
       set({ 
         currentExercise: { ...currentExercise, root },
         animateToRoot: null 
+      });
+    }
+  },
+  
+  setExerciseStringGroup: (stringGroup) => {
+    const { currentExercise } = get();
+    if (currentExercise) {
+      set({ 
+        currentExercise: { ...currentExercise, stringGroup },
+        animateToStringGroup: null 
       });
     }
   },

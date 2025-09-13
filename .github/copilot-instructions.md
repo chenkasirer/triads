@@ -58,12 +58,14 @@ When implementing features:
 - **Fretboard.tsx**: Interactive fretboard visualization
 - **SettingsPanel.tsx**: User preferences and exercise settings
 - **RootSelectorWheel.tsx**: Interactive root note selector (F001)
+- **StringGroupSlider.tsx**: Interactive string group selector (F002)
 
 ### State Management (store.ts)
 - `currentExercise`: Current triad to practice
 - `settings`: User preferences for exercise generation
 - `showAnswer`: Toggle for fretboard visibility
 - `animateToRoot`: For wheel animation effects
+- `animateToStringGroup`: For slider animation effects
 
 ### Styling
 - Custom CSS classes in `index.css` for color palette
@@ -94,6 +96,7 @@ When working on this project:
 
 ## Current Status
 - **F001**: ✅ Root selector wheel - Fully implemented and functional
+- **F002**: ✅ String group selector slider - Fully implemented and functional
 - **Next Features**: Check PROMPTS.md for upcoming requests
 
 ---

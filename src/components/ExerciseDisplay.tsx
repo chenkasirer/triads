@@ -3,6 +3,7 @@ import type { TriadExercise } from '../types';
 import { getTriadNotes } from '../fretboard';
 import { useAppStore } from '../store';
 import RootSelectorWheel from './RootSelectorWheel';
+import StringGroupSlider from './StringGroupSlider';
 
 interface ExerciseDisplayProps {
   exercise: TriadExercise;
@@ -10,14 +11,10 @@ interface ExerciseDisplayProps {
 }
 
 const ExerciseDisplay: React.FC<ExerciseDisplayProps> = ({ exercise, showAnswer }) => {
-  const { setExerciseRoot, animateToRoot } = useAppStore();
+  const { setExerciseRoot, animateToRoot, setExerciseStringGroup, animateToStringGroup } = useAppStore();
   
   const formatQuality = (quality: string) => {
     return quality.charAt(0).toUpperCase() + quality.slice(1);
-  };
-
-  const formatStringGroup = (stringGroup: string) => {
-    return `Strings ${stringGroup.split('').join('-')}`;
   };
 
   const getInversions = () => {
@@ -89,12 +86,13 @@ const ExerciseDisplay: React.FC<ExerciseDisplayProps> = ({ exercise, showAnswer 
               </div>
             </div>
 
-            {/* Focus Area */}
+            {/* String Group Selector */}
             <div>
-              <div className="text-sm sm:text-base text-gray font-medium mb-3">Focus Area:</div>
-              <div className="text-base sm:text-lg text-black font-semibold">
-                {formatStringGroup(exercise.stringGroup)}
-              </div>
+              <StringGroupSlider
+                selectedStringGroup={exercise.stringGroup}
+                onStringGroupChange={setExerciseStringGroup}
+                animateToStringGroup={animateToStringGroup}
+              />
             </div>
           </div>
         </div>
