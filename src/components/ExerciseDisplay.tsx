@@ -102,15 +102,7 @@ const ExerciseDisplay: React.FC<ExerciseDisplayProps> = ({ exercise, showAnswer 
               <RootHistoryPane />
             </div>
           </div>
-        </div>
-        
-        {!showAnswer && (
-          <div className="mt-6 sm:mt-8 p-3 sm:p-4 bg-sunset rounded-lg">
-            <p className="text-black text-sm sm:text-base">
-              Find and play this triad on the fretboard, then reveal the answer to check your work.
-            </p>
-          </div>
-        )}
+        </div>       
       </div>
     </div>
   );
