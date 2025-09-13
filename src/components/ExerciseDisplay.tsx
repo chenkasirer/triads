@@ -53,7 +53,7 @@ const ExerciseDisplay: React.FC<ExerciseDisplayProps> = ({ exercise, showAnswer 
           <div className="space-y-4 sm:space-y-6 w-full md:w-auto md:text-left text-center">
             {/* Inversions */}
             <div>
-              <div className="text-sm sm:text-base text-gray font-medium mb-3">Inversions:</div>
+              <div className="text-sm sm:text-base text-gray font-medium mb-3">Inversions</div>
               <div className="space-y-2">
                 <div className="text-sm sm:text-base flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-0">
                   <span className="font-semibold text-black w-full sm:w-12 md:w-14 text-center sm:text-left">Root</span> 
@@ -96,12 +96,12 @@ const ExerciseDisplay: React.FC<ExerciseDisplayProps> = ({ exercise, showAnswer 
                 animateToStringGroup={animateToStringGroup}
               />
             </div>
-          </div>
-        </div>
 
-        {/* Session History Pane - Now below main content for all screen sizes */}
-        <div className="mb-6 sm:mb-8">
-          <RootHistoryPane />
+            {/* Session History integrated with exercise controls */}
+            <div className="pt-2 border-t border-gray-200">
+              <RootHistoryPane />
+            </div>
+          </div>
         </div>
         
         {!showAnswer && (
