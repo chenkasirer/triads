@@ -14,7 +14,6 @@ interface AppState {
   setExerciseRoot: (root: Note) => void;
   setExerciseStringGroup: (stringGroup: StringGroup) => void;
   setExerciseQuality: (quality: TriadQuality) => void;
-  addToHistory: (root: Note) => void;
   clearHistory: () => void;
   toggleAnswer: () => void;
 }
@@ -122,13 +121,6 @@ export const useAppStore = create<AppState>((set, get) => ({
   },
   
   toggleAnswer: () => set((state) => ({ showAnswer: !state.showAnswer })),
-  
-  addToHistory: (root) => {
-    const { sessionHistory } = get();
-    if (!sessionHistory.includes(root)) {
-      set({ sessionHistory: [...sessionHistory, root] });
-    }
-  },
   
   clearHistory: () => set({ sessionHistory: [] }),
 }));

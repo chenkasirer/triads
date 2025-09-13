@@ -9,10 +9,9 @@ import QualitySelector from './QualitySelector';
 
 interface ExerciseDisplayProps {
   exercise: TriadExercise;
-  showAnswer: boolean;
 }
 
-const ExerciseDisplay: React.FC<ExerciseDisplayProps> = ({ exercise, showAnswer }) => {
+const ExerciseDisplay: React.FC<ExerciseDisplayProps> = ({ exercise }) => {
   const { setExerciseRoot, animateToRoot, setExerciseStringGroup, animateToStringGroup, setExerciseQuality, generateNewExercise } = useAppStore();
 
   const inversions = useMemo(() => {

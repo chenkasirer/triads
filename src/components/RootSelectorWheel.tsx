@@ -257,12 +257,7 @@ const RootSelectorWheel: React.FC<RootSelectorWheelProps> = ({
             />
           )}
         </div>
-      </div>
-      
-      <div className="mt-4 text-center">
-        <div className="text-sm text-gray-600 font-medium">Root Note</div>
-        <div className="text-lg font-bold text-black">{selectedRoot}</div>
-      </div>
+      </div>     
     </div>
   );
 };

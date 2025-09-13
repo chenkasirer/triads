@@ -52,7 +52,7 @@ function App() {
         <div className="space-y-6 sm:space-y-10 w-full">
           {/* Exercise Display */}
           {currentExercise && (
-            <ExerciseDisplay exercise={currentExercise} showAnswer={showAnswer} />
+            <ExerciseDisplay exercise={currentExercise} />
           )}
 
           {/* Controls */}

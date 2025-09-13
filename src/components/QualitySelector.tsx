@@ -4,15 +4,13 @@ import type { TriadQuality } from '../types';
 interface QualitySelectorProps {
   selectedQuality: TriadQuality;
   onQualityChange: (quality: TriadQuality) => void;
-  animateToQuality?: TriadQuality | null;
 }
 
 const ALL_QUALITIES: TriadQuality[] = ['major', 'minor', 'dim'];
 
 const QualitySelector: React.FC<QualitySelectorProps> = ({ 
   selectedQuality, 
-  onQualityChange, 
-  animateToQuality 
+  onQualityChange
 }) => {
   const formatQuality = (quality: TriadQuality) => {
     return quality.charAt(0).toUpperCase() + quality.slice(1);
@@ -29,21 +27,15 @@ const QualitySelector: React.FC<QualitySelectorProps> = ({
 
   return (
     <div className="flex flex-col items-center space-y-3">
-     
-      {/* Segmented Control */}
       <div className="relative bg-gray-100 rounded-lg p-1 flex">
-        {/* Animated Background */}
         <div 
-          className={`absolute top-1 bottom-1 bg-white rounded-md shadow-sm transition-all duration-300 ease-out ${
-            animateToQuality ? 'transition-all duration-800 ease-out' : ''
-          }`}
+          className="absolute top-1 bottom-1 bg-white rounded-md shadow-sm transition-all duration-300 ease-out"
           style={{
             left: `calc(${ALL_QUALITIES.indexOf(selectedQuality) * 33.333}% + 4px)`,
             width: 'calc(33.333% - 8px)'
           }}
         />
         
-        {/* Quality Options */}
         {ALL_QUALITIES.map((quality) => {
           const isSelected = quality === selectedQuality;
           
