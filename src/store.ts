@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import type { TriadExercise, ExerciseSettings, Note, StringGroup } from './types';
+import type { TriadExercise, ExerciseSettings, Note, StringGroup, TriadQuality } from './types';
 
 interface AppState {
   settings: ExerciseSettings;
@@ -13,6 +13,7 @@ interface AppState {
   generateNewExercise: () => void;
   setExerciseRoot: (root: Note) => void;
   setExerciseStringGroup: (stringGroup: StringGroup) => void;
+  setExerciseQuality: (quality: TriadQuality) => void;
   addToHistory: (root: Note) => void;
   clearHistory: () => void;
   toggleAnswer: () => void;
@@ -107,6 +108,15 @@ export const useAppStore = create<AppState>((set, get) => ({
       set({ 
         currentExercise: { ...currentExercise, stringGroup },
         animateToStringGroup: null 
+      });
+    }
+  },
+  
+  setExerciseQuality: (quality) => {
+    const { currentExercise } = get();
+    if (currentExercise) {
+      set({ 
+        currentExercise: { ...currentExercise, quality }
       });
     }
   },

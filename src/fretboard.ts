@@ -29,7 +29,7 @@ export function getTriadNotes(root: Note, quality: TriadQuality): TriadNotes {
       thirdInterval = 3; // Minor third
       fifthInterval = 7; // Perfect fifth
       break;
-    case 'diminished':
+    case 'dim':
       thirdInterval = 3; // Minor third
       fifthInterval = 6; // Diminished fifth
       break;

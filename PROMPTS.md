@@ -1,5 +1,19 @@
 This is a list of feature I'd like to add. For copilot to read and implement.
 
+# ✅ F004 - Quality selector (IMPLEMENTED)
+
+Add an interactive quality selector that allows the user to choose between Major, minor, and diminished triads. The UI should be clean, dynamic, and modern - perhaps a segmented control style with smooth animations and symbols representing each quality (M for major, m for minor, ° for diminished). This should replace the static quality text display under the root wheel.
+
+**Implementation Notes:**
+- Created `QualitySelector.tsx` component with segmented control design
+- Interactive selector with animated sliding background for smooth transitions
+- Quality symbols: M (major), m (minor), ° (diminished)
+- Smooth hover effects and click animations
+- Added `setExerciseQuality` method to Zustand store for quality selection
+- Integrated into ExerciseDisplay layout replacing static quality text
+- Modern design with flame color scheme matching app aesthetic
+- TypeScript interfaces for proper type safety and quality validation
+
 # ✅ F003 - Root practice history pane (IMPLEMENTED)
 
 Add some kind of ui element which holds, per the current session, the roots the user has gone through. this will let the use track their current exercise session. use this storage to make sure that per session, the same root does not recure when randomizing (maybe make this part configurable).

@@ -1,4 +1,4 @@
-export type TriadQuality = 'major' | 'minor' | 'diminished';
+export type TriadQuality = 'major' | 'minor' | 'dim';
 export type Note = 'C' | 'C#' | 'D' | 'D#' | 'E' | 'F' | 'F#' | 'G' | 'G#' | 'A' | 'A#' | 'B';
 export type Inversion = 'root' | 'first' | 'second';
 export type StringGroup = '654' | '543' | '432' | '321';

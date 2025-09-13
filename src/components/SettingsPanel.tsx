@@ -8,7 +8,7 @@ const SettingsPanel: React.FC = () => {
   const [isOpen, setIsOpen] = React.useState(false);
 
   const allRoots: Note[] = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
-  const allQualities: TriadQuality[] = ['major', 'minor', 'diminished'];
+  const allQualities: TriadQuality[] = ['major', 'minor', 'dim'];
   const allInversions: Inversion[] = ['root', 'first', 'second'];
   const allStringGroups: StringGroup[] = ['654', '543', '432', '321'];
 

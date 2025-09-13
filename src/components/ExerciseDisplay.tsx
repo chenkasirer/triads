@@ -5,6 +5,7 @@ import { useAppStore } from '../store';
 import RootSelectorWheel from './RootSelectorWheel';
 import StringGroupSlider from './StringGroupSlider';
 import { RootHistoryPane } from './RootHistoryPane';
+import QualitySelector from './QualitySelector';
 
 interface ExerciseDisplayProps {
   exercise: TriadExercise;
@@ -12,11 +13,7 @@ interface ExerciseDisplayProps {
 }
 
 const ExerciseDisplay: React.FC<ExerciseDisplayProps> = ({ exercise, showAnswer }) => {
-  const { setExerciseRoot, animateToRoot, setExerciseStringGroup, animateToStringGroup, generateNewExercise } = useAppStore();
-  
-  const formatQuality = (quality: string) => {
-    return quality.charAt(0).toUpperCase() + quality.slice(1);
-  };
+  const { setExerciseRoot, animateToRoot, setExerciseStringGroup, animateToStringGroup, setExerciseQuality, generateNewExercise } = useAppStore();
 
   const getInversions = () => {
     const triadNotes = getTriadNotes(exercise.root, exercise.quality);
@@ -44,8 +41,11 @@ const ExerciseDisplay: React.FC<ExerciseDisplayProps> = ({ exercise, showAnswer 
               animateToRoot={animateToRoot}
               size={260}
             />
-            <div className="text-lg sm:text-xl md:text-2xl font-semibold text-black mt-4">
-              {formatQuality(exercise.quality)}
+            <div className="mt-4">
+              <QualitySelector
+                selectedQuality={exercise.quality}
+                onQualityChange={setExerciseQuality}
+              />
             </div>
           </div>
 
