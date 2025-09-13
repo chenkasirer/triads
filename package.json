@@ -1,7 +1,7 @@
 {
   "name": "triads",
   "private": true,
-  "version": "0.4.0",
+  "version": "0.5.0",
   "type": "module",
   "license": "MIT",
   "author": "Chen Kasirer",
@@ -13,7 +13,7 @@
     "preview": "vite preview",
     "changelog": "auto-changelog --stdout --commit-limit false --unreleased",
     "release:patch": "npm run release -- patch",
-    "release:minor": "npm run release -- minor", 
+    "release:minor": "npm run release -- minor",
     "release:major": "npm run release -- major",
     "release": "node scripts/release.js"
   },

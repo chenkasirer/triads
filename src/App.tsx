@@ -109,7 +109,7 @@ function App() {
               />
             </a>
             <span className="text-xs text-gray-400">•</span>
-            <span className="text-xs text-gray-400">v0.4.0</span>
+            <span className="text-xs text-gray-400">v0.5.0</span>
           </div>
         </div>
       </footer>

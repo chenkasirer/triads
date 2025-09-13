@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.5.0] - 2025-09-13
+
 ### Added
 - Interactive root selector wheel - drag to rotate or click notes directly
 - Interactive string group slider - drag or click to select string groups (654, 543, 432, 321)

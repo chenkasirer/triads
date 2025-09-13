@@ -1,8 +1,6 @@
 #!/usr/bin/env node
 
-const fs = require('fs');
-const path = require('path');
-const { execSync } = require('child_process');
+import fs from 'fs';
 
 // Get the release type from command line args
 const releaseType = process.argv[2] || 'minor';
