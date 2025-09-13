@@ -1,7 +1,7 @@
 {
   "name": "triads",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.4.0",
   "type": "module",
   "license": "MIT",
   "author": "Chen Kasirer",
@@ -10,7 +10,12 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "changelog": "auto-changelog --stdout --commit-limit false --unreleased",
+    "release:patch": "npm run release -- patch",
+    "release:minor": "npm run release -- minor", 
+    "release:major": "npm run release -- major",
+    "release": "node scripts/release.js"
   },
   "dependencies": {
     "lucide-react": "^0.542.0",
@@ -24,6 +29,7 @@
     "@types/react": "^19.1.10",
     "@types/react-dom": "^19.1.7",
     "@vitejs/plugin-react": "^5.0.0",
+    "auto-changelog": "^2.5.0",
     "eslint": "^9.33.0",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.20",

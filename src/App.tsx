@@ -107,8 +107,9 @@ function App() {
                 height="16"
                 className="filter brightness-0 opacity-60 hover:opacity-100 transition-opacity"
               />
-
             </a>
+            <span className="text-xs text-gray-400">•</span>
+            <span className="text-xs text-gray-400">v0.4.0</span>
           </div>
         </div>
       </footer>
