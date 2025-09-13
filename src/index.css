@@ -18,6 +18,7 @@ body {
 .text-flame { color: #cf5c36; }
 .hover\:bg-flame:hover { background-color: #cf5c36; }
 .border-flame { border-color: #cf5c36; }
+.border-flame-dark { border-color: #b5502e; }
 .accent-flame { accent-color: #cf5c36; }
 
 .bg-lavender-blush { background-color: #eee5e9; }
@@ -26,5 +27,10 @@ body {
 .bg-gray { background-color: #7c7c7c; }
 .text-gray { color: #7c7c7c; }
 .border-gray { border-color: #7c7c7c; }
+.border-gray-300 { border-color: #d1d5db; }
+.border-gray-400 { border-color: #9ca3af; }
+.border-gray-600 { border-color: #4b5563; }
+.hover\:border-gray-600:hover { border-color: #4b5563; }
+.text-gray-600 { color: #4b5563; }
 
 .bg-sunset { background-color: #efc88b; }

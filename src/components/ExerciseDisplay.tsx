@@ -1,6 +1,8 @@
 import React from 'react';
 import type { TriadExercise } from '../types';
 import { getTriadNotes } from '../fretboard';
+import { useAppStore } from '../store';
+import RootSelectorWheel from './RootSelectorWheel';
 
 interface ExerciseDisplayProps {
   exercise: TriadExercise;
@@ -8,6 +10,8 @@ interface ExerciseDisplayProps {
 }
 
 const ExerciseDisplay: React.FC<ExerciseDisplayProps> = ({ exercise, showAnswer }) => {
+  const { setExerciseRoot, animateToRoot } = useAppStore();
+  
   const formatQuality = (quality: string) => {
     return quality.charAt(0).toUpperCase() + quality.slice(1);
   };
@@ -33,14 +37,15 @@ const ExerciseDisplay: React.FC<ExerciseDisplayProps> = ({ exercise, showAnswer 
         
         {/* Responsive Layout: Stack on mobile, horizontal on large screens */}
         <div className="mb-6 sm:mb-8 flex flex-col md:flex-row md:items-center md:justify-center md:gap-12 lg:gap-16 gap-6 sm:gap-8 w-full">
-          {/* Root Note */}
+          {/* Root Selector Wheel */}
           <div className="text-center flex-shrink-0">
-            <div className="inline-flex items-center justify-center w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 rounded-full bg-flame mb-4">
-              <span className="text-3xl sm:text-4xl md:text-5xl font-bold text-lavender-blush">
-                {exercise.root}
-              </span>
-            </div>
-            <div className="text-lg sm:text-xl md:text-2xl font-semibold text-black">
+            <RootSelectorWheel
+              selectedRoot={exercise.root}
+              onRootChange={setExerciseRoot}
+              animateToRoot={animateToRoot}
+              size={260}
+            />
+            <div className="text-lg sm:text-xl md:text-2xl font-semibold text-black mt-4">
               {formatQuality(exercise.quality)}
             </div>
           </div>
