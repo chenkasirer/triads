@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import type { Note } from '../types';
+import { useAppStore } from '../store';
 
 interface RootSelectorWheelProps {
   selectedRoot: Note;
@@ -16,6 +17,7 @@ const RootSelectorWheel: React.FC<RootSelectorWheelProps> = ({
   animateToRoot,
   size = 260
 }) => {
+  const { settings } = useAppStore();
   const [isDragging, setIsDragging] = useState(false);
   const [rotation, setRotation] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
@@ -200,21 +202,26 @@ const RootSelectorWheel: React.FC<RootSelectorWheelProps> = ({
             const x = centerX + radius * Math.cos(radian);
             const y = centerY + radius * Math.sin(radian);
             const isSelected = note === selectedRoot;
+            const isEnabled = settings.roots.includes(note);
             
             return (
               <div
                 key={note}
-                className={`absolute flex items-center justify-center rounded-full border-2 font-bold transition-all duration-200 cursor-pointer ${
+                className={`absolute flex items-center justify-center rounded-full border-2 font-bold transition-all duration-200 ${
+                  isEnabled ? 'cursor-pointer' : 'cursor-not-allowed'
+                } ${
                   isSelected 
                     ? 'w-11 h-11 text-base bg-flame text-lavender-blush border-flame-dark shadow-lg scale-110' 
-                    : 'w-9 h-9 text-sm bg-white text-black border-gray-400 hover:border-gray-600 hover:scale-105'
+                    : isEnabled
+                    ? 'w-9 h-9 text-sm bg-white text-black border-gray-400 hover:border-gray-600 hover:scale-105'
+                    : 'w-9 h-9 text-sm bg-gray-100 text-gray-400 border-gray-300 opacity-60'
                 }`}
                 style={{
                   left: x - (isSelected ? 22 : 18),
                   top: y - (isSelected ? 22 : 18),
                   transform: `rotate(${-rotation}deg)`
                 }}
-                onClick={(e) => handleNoteClick(note, e)}
+                onClick={(e) => isEnabled ? handleNoteClick(note, e) : undefined}
               >
                 {note}
               </div>
