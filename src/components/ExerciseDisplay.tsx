@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import type { TriadExercise } from '../types';
 import { getTriadNotes } from '../fretboard';
 import { useAppStore } from '../store';
@@ -15,16 +15,14 @@ interface ExerciseDisplayProps {
 const ExerciseDisplay: React.FC<ExerciseDisplayProps> = ({ exercise, showAnswer }) => {
   const { setExerciseRoot, animateToRoot, setExerciseStringGroup, animateToStringGroup, setExerciseQuality, generateNewExercise } = useAppStore();
 
-  const getInversions = () => {
+  const inversions = useMemo(() => {
     const triadNotes = getTriadNotes(exercise.root, exercise.quality);
     return {
       root: [triadNotes.root, triadNotes.third, triadNotes.fifth],
       first: [triadNotes.third, triadNotes.fifth, triadNotes.root],
       second: [triadNotes.fifth, triadNotes.root, triadNotes.third]
     };
-  };
-
-  const inversions = getInversions();
+  }, [exercise.root, exercise.quality]);
 
   return (
     <div className="bg-white rounded-lg p-4 sm:p-8 shadow-lg w-full">
