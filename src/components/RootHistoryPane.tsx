@@ -9,8 +9,8 @@ export const RootHistoryPane: React.FC = () => {
   };
 
   return (
-    <div className="space-y-3">
-      <div className="flex items-center justify-between">
+    <div className="space-y-3 w-full">
+      <div className="flex items-center justify-between w-full">
         <div className="flex items-center gap-4">
           <h3 className="text-sm font-medium text-gray-600">Session</h3>
           <label className="flex items-center text-xs text-gray-500">
@@ -32,13 +32,13 @@ export const RootHistoryPane: React.FC = () => {
         </button>
       </div>
       
-      <div>       
+      <div className="w-full">       
         {sessionHistory.length === 0 ? (
           <div className="text-gray-400 text-xs italic">
             No roots practiced yet
           </div>
         ) : (
-          <div className="flex flex-wrap gap-1.5">
+          <div className="flex flex-wrap gap-1.5 w-full">
             {sessionHistory.map((root, index) => (
               <span
                 key={`${root}-${index}`}

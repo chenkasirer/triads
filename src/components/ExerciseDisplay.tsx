@@ -50,46 +50,46 @@ const ExerciseDisplay: React.FC<ExerciseDisplayProps> = ({ exercise, showAnswer 
           </div>
 
           {/* Inversions and Focus Area */}
-          <div className="space-y-4 sm:space-y-6 w-full md:w-auto md:text-left text-center">
+          <div className="space-y-4 sm:space-y-6 w-full md:w-80 lg:w-96 md:text-left text-center">
             {/* Inversions */}
-            <div>
+            <div className="w-full">
               <div className="text-sm sm:text-base text-gray font-medium mb-3">Inversions</div>
-              <div className="space-y-2">
-                <div className="text-sm sm:text-base flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-0">
-                  <span className="font-semibold text-black w-full sm:w-12 md:w-14 text-center sm:text-left">Root</span> 
-                  <div className="flex items-center justify-center sm:justify-start gap-1 sm:gap-1.5 sm:ml-2 md:ml-3">
-                    <span className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-flame text-white text-xs sm:text-sm flex items-center justify-center font-bold">{inversions.root[0]}</span>
+              <div className="space-y-2 w-full">
+                <div className="text-sm sm:text-base flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-0 w-full">
+                  <span className="font-semibold text-black w-full sm:w-12 md:w-14 text-center sm:text-left flex-shrink-0">Root</span> 
+                  <div className="flex items-center justify-center gap-1 sm:gap-1.5 w-full sm:pl-2 md:pl-3 border border-transparent">
+                    <span className="w-10 h-10 rounded-full bg-flame text-white text-xs sm:text-sm flex items-center justify-center font-bold">{inversions.root[0]}</span>
                     <span className="mx-0.5 sm:mx-1 text-gray">-</span>
-                    <span className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-sunset text-black text-xs sm:text-sm flex items-center justify-center font-bold">{inversions.root[1]}</span>
+                    <span className="w-10 h-10 rounded-full bg-sunset text-black text-xs sm:text-sm flex items-center justify-center font-bold">{inversions.root[1]}</span>
                     <span className="mx-0.5 sm:mx-1 text-gray">-</span>
-                    <span className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-black text-white text-xs sm:text-sm flex items-center justify-center font-bold">{inversions.root[2]}</span>
+                    <span className="w-10 h-10 rounded-full bg-black text-white text-xs sm:text-sm flex items-center justify-center font-bold">{inversions.root[2]}</span>
                   </div>
                 </div>
-                <div className="text-sm sm:text-base flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-0">
-                  <span className="font-semibold text-black w-full sm:w-12 md:w-14 text-center sm:text-left">1<sup>st</sup></span> 
-                  <div className="flex items-center justify-center sm:justify-start gap-1 sm:gap-1.5 sm:ml-2 md:ml-3">
-                    <span className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-sunset text-black text-xs sm:text-sm flex items-center justify-center font-bold">{inversions.first[0]}</span>
+                <div className="text-sm sm:text-base flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-0 w-full">
+                  <span className="font-semibold text-black w-full sm:w-12 md:w-14 text-center sm:text-left flex-shrink-0">1<sup>st</sup></span> 
+                  <div className="flex items-center justify-center gap-1 sm:gap-1.5 w-full sm:pl-2 md:pl-3 border border-transparent">
+                    <span className="w-10 h-10 rounded-full bg-sunset text-black text-xs sm:text-sm flex items-center justify-center font-bold">{inversions.first[0]}</span>
                     <span className="mx-0.5 sm:mx-1 text-gray">-</span>
-                    <span className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-black text-white text-xs sm:text-sm flex items-center justify-center font-bold">{inversions.first[1]}</span>
+                    <span className="w-10 h-10 rounded-full bg-black text-white text-xs sm:text-sm flex items-center justify-center font-bold">{inversions.first[1]}</span>
                     <span className="mx-0.5 sm:mx-1 text-gray">-</span>
-                    <span className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-flame text-white text-xs sm:text-sm flex items-center justify-center font-bold">{inversions.first[2]}</span>
+                    <span className="w-10 h-10 rounded-full bg-flame text-white text-xs sm:text-sm flex items-center justify-center font-bold">{inversions.first[2]}</span>
                   </div>
                 </div>
-                <div className="text-sm sm:text-base flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-0">
-                  <span className="font-semibold text-black w-full sm:w-12 md:w-14 text-center sm:text-left">2<sup>nd</sup></span> 
-                  <div className="flex items-center justify-center sm:justify-start gap-1 sm:gap-1.5 sm:ml-2 md:ml-3">
-                    <span className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-black text-white text-xs sm:text-sm flex items-center justify-center font-bold">{inversions.second[0]}</span>
+                <div className="text-sm sm:text-base flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-0 w-full">
+                  <span className="font-semibold text-black w-full sm:w-12 md:w-14 text-center sm:text-left flex-shrink-0">2<sup>nd</sup></span> 
+                  <div className="flex items-center justify-center gap-1 sm:gap-1.5 w-full sm:pl-2 md:pl-3 border border-transparent">
+                    <span className="w-10 h-10 rounded-full bg-black text-white text-xs sm:text-sm flex items-center justify-center font-bold">{inversions.second[0]}</span>
                     <span className="mx-0.5 sm:mx-1 text-gray">-</span>
-                    <span className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-flame text-white text-xs sm:text-sm flex items-center justify-center font-bold">{inversions.second[1]}</span>
+                    <span className="w-10 h-10 rounded-full bg-flame text-white text-xs sm:text-sm flex items-center justify-center font-bold">{inversions.second[1]}</span>
                     <span className="mx-0.5 sm:mx-1 text-gray">-</span>
-                    <span className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-sunset text-black text-xs sm:text-sm flex items-center justify-center font-bold">{inversions.second[2]}</span>
+                    <span className="w-10 h-10 rounded-full bg-sunset text-black text-xs sm:text-sm flex items-center justify-center font-bold">{inversions.second[2]}</span>
                   </div>
                 </div>
               </div>
             </div>
 
             {/* String Group Selector */}
-            <div>
+            <div className="w-full">
               <StringGroupSlider
                 selectedStringGroup={exercise.stringGroup}
                 onStringGroupChange={setExerciseStringGroup}
@@ -98,7 +98,7 @@ const ExerciseDisplay: React.FC<ExerciseDisplayProps> = ({ exercise, showAnswer 
             </div>
 
             {/* Session History integrated with exercise controls */}
-            <div className="pt-2 border-t border-gray-200">
+            <div className="pt-2 border-t border-gray-200 w-full">
               <RootHistoryPane />
             </div>
           </div>

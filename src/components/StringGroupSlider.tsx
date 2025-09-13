@@ -20,11 +20,26 @@ const StringGroupSlider: React.FC<StringGroupSliderProps> = ({
   const sliderRef = useRef<HTMLDivElement>(null);
   const startPosRef = useRef(0);
 
-  const sliderWidth = 280;
+  // Dynamic width based on container
+  const [containerWidth, setContainerWidth] = useState(280);
   const knobSize = 60;
   const trackHeight = 8;
-  const availableWidth = sliderWidth - knobSize;
+  const availableWidth = containerWidth - knobSize;
   const stepWidth = availableWidth / (ALL_STRING_GROUPS.length - 1);
+
+  // Update container width when component mounts or resizes
+  useEffect(() => {
+    const updateWidth = () => {
+      if (sliderRef.current) {
+        const parentWidth = sliderRef.current.parentElement?.offsetWidth || 280;
+        setContainerWidth(Math.max(280, parentWidth)); // Minimum 280px
+      }
+    };
+
+    updateWidth();
+    window.addEventListener('resize', updateWidth);
+    return () => window.removeEventListener('resize', updateWidth);
+  }, []);
 
   const calculatePositionForStringGroup = useCallback((stringGroup: StringGroup) => {
     const index = ALL_STRING_GROUPS.indexOf(stringGroup);
@@ -139,11 +154,11 @@ const StringGroupSlider: React.FC<StringGroupSliderProps> = ({
   });
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center w-full">
       <div 
         ref={sliderRef}
-        className="relative select-none"
-        style={{ width: sliderWidth, height: knobSize }}
+        className="relative select-none w-full"
+        style={{ height: knobSize }}
       >
         {/* Track */}
         <div 
