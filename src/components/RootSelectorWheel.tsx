@@ -1,10 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
 import type { Note } from '../types';
 import { useAppStore } from '../store';
+import shuffleIcon from '../assets/shuffle.svg';
 
 interface RootSelectorWheelProps {
   selectedRoot: Note;
   onRootChange: (root: Note) => void;
+  onRandomize?: () => void; // Function to call for randomization
   animateToRoot?: Note | null; // For random root animation
   size?: number;
 }
@@ -14,6 +16,7 @@ const ALL_NOTES: Note[] = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A',
 const RootSelectorWheel: React.FC<RootSelectorWheelProps> = ({ 
   selectedRoot, 
   onRootChange, 
+  onRandomize,
   animateToRoot,
   size = 260
 }) => {
@@ -229,14 +232,33 @@ const RootSelectorWheel: React.FC<RootSelectorWheelProps> = ({
           })}
         </div>
         
-        {/* Center dot */}
+        {/* Center randomize button */}
         <div 
-          className="absolute w-4 h-4 bg-gray-600 rounded-full"
+          className={`absolute rounded-full transition-all duration-200 flex items-center justify-center ${
+            onRandomize 
+              ? 'w-10 h-10 bg-flame text-white cursor-pointer hover:bg-opacity-90 hover:scale-110 shadow-lg border-2 border-flame-dark' 
+              : 'w-4 h-4 bg-gray-600'
+          }`}
           style={{ 
-            left: centerX - 8, 
-            top: centerY - 8 
+            left: centerX - (onRandomize ? 20 : 8), 
+            top: centerY - (onRandomize ? 20 : 8) 
           }}
-        />
+          onClick={onRandomize ? () => onRandomize() : undefined}
+          title={onRandomize ? "Randomize root note" : undefined}
+        >
+          {onRandomize && (
+            <img 
+              src={shuffleIcon} 
+              alt="Shuffle" 
+              width="16" 
+              height="16" 
+              className="filter brightness-0 invert"
+              style={{
+                filter: 'brightness(0) invert(1) drop-shadow(0 0 0.5px white) drop-shadow(0 0 0.5px white)'
+              }}
+            />
+          )}
+        </div>
       </div>
       
       <div className="mt-4 text-center">

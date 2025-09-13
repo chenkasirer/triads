@@ -12,7 +12,7 @@ interface ExerciseDisplayProps {
 }
 
 const ExerciseDisplay: React.FC<ExerciseDisplayProps> = ({ exercise, showAnswer }) => {
-  const { setExerciseRoot, animateToRoot, setExerciseStringGroup, animateToStringGroup } = useAppStore();
+  const { setExerciseRoot, animateToRoot, setExerciseStringGroup, animateToStringGroup, generateNewExercise } = useAppStore();
   
   const formatQuality = (quality: string) => {
     return quality.charAt(0).toUpperCase() + quality.slice(1);
@@ -40,6 +40,7 @@ const ExerciseDisplay: React.FC<ExerciseDisplayProps> = ({ exercise, showAnswer 
             <RootSelectorWheel
               selectedRoot={exercise.root}
               onRootChange={setExerciseRoot}
+              onRandomize={generateNewExercise}
               animateToRoot={animateToRoot}
               size={260}
             />

@@ -5,14 +5,14 @@ import Fretboard from './components/Fretboard';
 import ExerciseDisplay from './components/ExerciseDisplay';
 import SettingsPanel from './components/SettingsPanel';
 import CookieConsent from './components/CookieConsent';
-import { Shuffle, Eye, EyeOff } from 'lucide-react';
+import { Eye, EyeOff } from 'lucide-react';
 import logoSvg from './assets/triad-fretboard.svg';
 
 function App() {
   const { 
     currentExercise, 
     showAnswer, 
-    generateNewExercise, 
+    generateNewExercise,
     toggleAnswer 
   } = useAppStore();
 
@@ -57,14 +57,6 @@ function App() {
 
           {/* Controls */}
           <div className="flex flex-col sm:flex-row justify-center gap-3">
-            <button
-              onClick={generateNewExercise}
-              className="flex items-center justify-center gap-2 px-5 py-2.5 bg-flame text-lavender-blush rounded-md hover:bg-flame transition-colors text-sm font-medium"
-            >
-              <Shuffle size={18} />
-              Random Root
-            </button>
-            
             <button
               onClick={toggleAnswer}
               className={`flex items-center justify-center gap-2 px-5 py-2.5 rounded-md text-sm font-medium transition-colors ${

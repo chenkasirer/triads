@@ -33,11 +33,7 @@ export const RootHistoryPane: React.FC = () => {
         </label>
       </div>
       
-      <div className="space-y-2">
-        <div className="text-sm text-gray-500">
-          Practiced roots ({sessionHistory.length}):
-        </div>
-        
+      <div className="space-y-2">       
         {sessionHistory.length === 0 ? (
           <div className="text-gray-400 text-sm italic">
             No roots practiced yet
@@ -55,12 +51,6 @@ export const RootHistoryPane: React.FC = () => {
           </div>
         )}
       </div>
-      
-      {!allowRepeatRoots && sessionHistory.length > 0 && (
-        <div className="mt-3 text-xs text-gray-500">
-          💡 Random selection avoids practiced roots
-        </div>
-      )}
     </div>
   );
 };
