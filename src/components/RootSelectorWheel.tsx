@@ -210,9 +210,7 @@ const RootSelectorWheel: React.FC<RootSelectorWheelProps> = ({
             return (
               <div
                 key={note}
-                className={`absolute flex items-center justify-center rounded-full border-2 font-bold transition-all duration-200 ${
-                  isEnabled ? 'cursor-pointer' : 'cursor-not-allowed'
-                } ${
+                className={`absolute flex items-center justify-center rounded-full border-2 font-bold transition-all duration-200 cursor-pointer ${
                   isSelected 
                     ? 'w-11 h-11 text-base bg-flame text-lavender-blush border-flame-dark shadow-lg scale-110' 
                     : isEnabled
@@ -224,7 +222,7 @@ const RootSelectorWheel: React.FC<RootSelectorWheelProps> = ({
                   top: y - (isSelected ? 22 : 18),
                   transform: `rotate(${-rotation}deg)`
                 }}
-                onClick={(e) => isEnabled ? handleNoteClick(note, e) : undefined}
+                onClick={(e) => handleNoteClick(note, e)}
               >
                 {note}
               </div>
