@@ -5,6 +5,7 @@ interface StringGroupSliderProps {
   selectedStringGroup: StringGroup;
   onStringGroupChange: (stringGroup: StringGroup) => void;
   animateToStringGroup?: StringGroup | null;
+  disabled?: boolean;
 }
 
 const ALL_STRING_GROUPS: StringGroup[] = ['654', '543', '432', '321'];
@@ -12,7 +13,8 @@ const ALL_STRING_GROUPS: StringGroup[] = ['654', '543', '432', '321'];
 const StringGroupSlider: React.FC<StringGroupSliderProps> = ({ 
   selectedStringGroup, 
   onStringGroupChange, 
-  animateToStringGroup 
+  animateToStringGroup,
+  disabled = false
 }) => {
   const [isDragging, setIsDragging] = useState(false);
   const [sliderPosition, setSliderPosition] = useState(0);
@@ -67,21 +69,21 @@ const StringGroupSlider: React.FC<StringGroupSliderProps> = ({
   }, [animateToStringGroup, calculatePositionForStringGroup]);
 
   const handleMouseDown = (e: React.MouseEvent) => {
-    if (isAnimating) return;
+    if (isAnimating || disabled) return;
     e.preventDefault();
     setIsDragging(true);
     startPosRef.current = e.clientX - sliderPosition;
   };
 
   const handleMouseMove = (e: MouseEvent) => {
-    if (!isDragging || isAnimating) return;
+    if (!isDragging || isAnimating || disabled) return;
     const newPosition = e.clientX - startPosRef.current;
     const clampedPosition = Math.max(0, Math.min(newPosition, availableWidth));
     setSliderPosition(clampedPosition);
   };
 
   const handleMouseUp = () => {
-    if (!isDragging || isAnimating) return;
+    if (!isDragging || isAnimating || disabled) return;
     setIsDragging(false);
     
     // Snap to nearest string group
@@ -96,7 +98,7 @@ const StringGroupSlider: React.FC<StringGroupSliderProps> = ({
   };
 
   const handleTouchStart = (e: React.TouchEvent) => {
-    if (isAnimating) return;
+    if (isAnimating || disabled) return;
     e.preventDefault();
     setIsDragging(true);
     if (e.touches[0]) {
@@ -105,14 +107,14 @@ const StringGroupSlider: React.FC<StringGroupSliderProps> = ({
   };
 
   const handleTouchMove = (e: TouchEvent) => {
-    if (!isDragging || isAnimating || !e.touches[0]) return;
+    if (!isDragging || isAnimating || disabled || !e.touches[0]) return;
     const newPosition = e.touches[0].clientX - startPosRef.current;
     const clampedPosition = Math.max(0, Math.min(newPosition, availableWidth));
     setSliderPosition(clampedPosition);
   };
 
   const handleTouchEnd = () => {
-    if (!isDragging || isAnimating) return;
+    if (!isDragging || isAnimating || disabled) return;
     setIsDragging(false);
     
     // Snap to nearest string group
@@ -127,7 +129,7 @@ const StringGroupSlider: React.FC<StringGroupSliderProps> = ({
   };
 
   const handleStepClick = (stringGroup: StringGroup) => {
-    if (isAnimating || isDragging) return;
+    if (isAnimating || isDragging || disabled) return;
     onStringGroupChange(stringGroup);
   };
 
@@ -154,7 +156,7 @@ const StringGroupSlider: React.FC<StringGroupSliderProps> = ({
   });
 
   return (
-    <div className="flex flex-col items-center w-full">
+    <div className={`flex flex-col items-center w-full ${disabled ? 'opacity-40 pointer-events-none' : ''}`}>
       <div 
         ref={sliderRef}
         className="relative select-none w-full"
@@ -162,7 +164,7 @@ const StringGroupSlider: React.FC<StringGroupSliderProps> = ({
       >
         {/* Track */}
         <div 
-          className="absolute bg-gray-300 rounded-full"
+          className={`absolute rounded-full ${disabled ? 'bg-gray-200' : 'bg-gray-300'}`}
           style={{
             left: knobSize / 2,
             top: (knobSize - trackHeight) / 2,
@@ -180,8 +182,12 @@ const StringGroupSlider: React.FC<StringGroupSliderProps> = ({
             <div key={stringGroup}>
               {/* Step marker */}
               <div
-                className={`absolute w-3 h-3 rounded-full cursor-pointer transition-colors ${
-                  isSelected ? 'bg-flame' : 'bg-gray-400 hover:bg-gray-600'
+                className={`absolute w-3 h-3 rounded-full transition-colors ${
+                  disabled 
+                    ? 'bg-gray-300 cursor-not-allowed' 
+                    : isSelected 
+                      ? 'bg-flame cursor-pointer' 
+                      : 'bg-gray-400 hover:bg-gray-600 cursor-pointer'
                 }`}
                 style={{
                   left: x - 6,
@@ -195,8 +201,12 @@ const StringGroupSlider: React.FC<StringGroupSliderProps> = ({
 
         {/* Slider knob */}
         <div
-          className={`absolute bg-white border-4 border-flame rounded-full shadow-lg cursor-pointer transition-all duration-200 ${
-            isDragging ? 'scale-110 shadow-xl' : 'hover:scale-105'
+          className={`absolute bg-white rounded-full shadow-lg transition-all duration-200 ${
+            disabled 
+              ? 'border-4 border-gray-300 cursor-not-allowed' 
+              : `border-4 border-flame cursor-pointer ${
+                  isDragging ? 'scale-110 shadow-xl' : 'hover:scale-105'
+                }`
           } ${isAnimating ? 'transition-all duration-800 ease-out' : isDragging ? 'transition-none' : ''}`}
           style={{
             left: sliderPosition,
@@ -209,7 +219,7 @@ const StringGroupSlider: React.FC<StringGroupSliderProps> = ({
           onTouchStart={handleTouchStart}
         >
           <div className="flex items-center justify-center h-full">
-            <span className="text-flame font-bold text-md">
+            <span className={`font-bold text-md ${disabled ? 'text-gray-400' : 'text-flame'}`}>
               {selectedStringGroup.split('').join('-')}
             </span>
           </div>

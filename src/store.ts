@@ -9,6 +9,7 @@ interface AppState {
   animateToStringGroup: StringGroup | null;
   sessionHistory: Note[];
   allowRepeatRoots: boolean;
+  showAllStringGroups: boolean;
   updateSettings: (settings: Partial<ExerciseSettings>) => void;
   generateNewExercise: () => void;
   setExerciseRoot: (root: Note) => void;
@@ -16,6 +17,7 @@ interface AppState {
   setExerciseQuality: (quality: TriadQuality) => void;
   clearHistory: () => void;
   toggleAnswer: () => void;
+  toggleAllStringGroups: () => void;
 }
 
 const defaultSettings: ExerciseSettings = {
@@ -37,6 +39,7 @@ export const useAppStore = create<AppState>((set, get) => ({
   animateToStringGroup: null,
   sessionHistory: [],
   allowRepeatRoots: false,
+  showAllStringGroups: false,
   
   updateSettings: (newSettings) =>
     set((state) => ({
@@ -121,6 +124,8 @@ export const useAppStore = create<AppState>((set, get) => ({
   },
   
   toggleAnswer: () => set((state) => ({ showAnswer: !state.showAnswer })),
+  
+  toggleAllStringGroups: () => set((state) => ({ showAllStringGroups: !state.showAllStringGroups })),
   
   clearHistory: () => set({ sessionHistory: [] }),
 }));

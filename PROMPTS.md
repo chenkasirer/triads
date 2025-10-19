@@ -1,5 +1,24 @@
 This is a list of feature I'd like to add. For copilot to read and implement.
 
+# ✅ F005 - Show all string groups (IMPLEMENTED)
+
+Add the ability to see the currently selected triad accross all string groups. currently the triads only show in the selected string group according to the position of the slider.
+Come up with an appropriate UI concept for that. Something that allows toggling between the current slider position and simply all positions.
+
+**Implementation Notes:**
+- Created `StringGroupToggle.tsx` component with toggle button design
+- Added `showAllStringGroups` boolean state to Zustand store
+- Added `toggleAllStringGroups()` method to toggle between single and all groups view
+- Updated `App.tsx` to conditionally show all string groups when toggle is active
+- When "All Groups" mode is enabled, fretboard displays triads across all 4 string groups (654, 543, 432, 321) simultaneously
+- Toggle button features clean design with grid icon for "all groups" and single square for "single group"
+- Integrated below string group slider in ExerciseDisplay for intuitive access
+- Smooth transitions with flame color accent when active
+- String group slider is automatically disabled (grayed out with reduced opacity) when "All Groups" mode is active
+- Disabled state prevents all slider interactions including dragging, clicking, and hover effects
+- Helpful for seeing full fretboard patterns and chord shapes across all positions
+
+
 # ✅ F004 - Quality selector (IMPLEMENTED)
 
 Add an interactive quality selector that allows the user to choose between Major, minor, and diminished triads. The UI should be clean, dynamic, and modern - perhaps a segmented control style with smooth animations and symbols representing each quality (M for major, m for minor, ° for diminished). This should replace the static quality text display under the root wheel.

@@ -11,7 +11,8 @@ import logoSvg from './assets/triad-fretboard.svg';
 function App() {
   const { 
     currentExercise, 
-    showAnswer, 
+    showAnswer,
+    showAllStringGroups,
     generateNewExercise,
     toggleAnswer 
   } = useAppStore();
@@ -24,10 +25,21 @@ function App() {
   }, [currentExercise, generateNewExercise]);
 
   const fretboardPositions = currentExercise ? 
-    getAllTriadPositions(
-      currentExercise.root,
-      currentExercise.quality,
-      currentExercise.stringGroup
+    (showAllStringGroups 
+      ? // Show all string groups
+        (['654', '543', '432', '321'] as const).flatMap(group =>
+          getAllTriadPositions(
+            currentExercise.root,
+            currentExercise.quality,
+            group
+          )
+        )
+      : // Show only selected string group
+        getAllTriadPositions(
+          currentExercise.root,
+          currentExercise.quality,
+          currentExercise.stringGroup
+        )
     ) : [];
 
   return (

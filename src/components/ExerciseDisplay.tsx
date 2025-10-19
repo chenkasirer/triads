@@ -4,6 +4,7 @@ import { getTriadNotes } from '../fretboard';
 import { useAppStore } from '../store';
 import RootSelectorWheel from './RootSelectorWheel';
 import StringGroupSlider from './StringGroupSlider';
+import StringGroupToggle from './StringGroupToggle';
 import { RootHistoryPane } from './RootHistoryPane';
 import QualitySelector from './QualitySelector';
 
@@ -12,7 +13,7 @@ interface ExerciseDisplayProps {
 }
 
 const ExerciseDisplay: React.FC<ExerciseDisplayProps> = ({ exercise }) => {
-  const { setExerciseRoot, animateToRoot, setExerciseStringGroup, animateToStringGroup, setExerciseQuality, generateNewExercise } = useAppStore();
+  const { setExerciseRoot, animateToRoot, setExerciseStringGroup, animateToStringGroup, setExerciseQuality, generateNewExercise, showAllStringGroups, toggleAllStringGroups } = useAppStore();
 
   const inversions = useMemo(() => {
     const triadNotes = getTriadNotes(exercise.root, exercise.quality);
@@ -86,11 +87,16 @@ const ExerciseDisplay: React.FC<ExerciseDisplayProps> = ({ exercise }) => {
             </div>
 
             {/* String Group Selector */}
-            <div className="w-full">
+            <div className="w-full space-y-3">
               <StringGroupSlider
                 selectedStringGroup={exercise.stringGroup}
                 onStringGroupChange={setExerciseStringGroup}
                 animateToStringGroup={animateToStringGroup}
+                disabled={showAllStringGroups}
+              />
+              <StringGroupToggle
+                showAllGroups={showAllStringGroups}
+                onToggle={toggleAllStringGroups}
               />
             </div>
 
